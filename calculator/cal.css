@@ -1,0 +1,40 @@
+* {
+    margin: 0; padding: 0;
+}
+h1 {
+    text-align: center;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tabs {
+    display: flex;
+}
+.tabs .tab {
+    margin: 10px, 10px;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 50px;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    background-color: lightgray;
+    color: black;
+    position: relative;
+    border-top-left-radius: 10px;
+    border: 5px, solid, darkslategray;
+}
+.items {
+    width: 300px;
+    display: none;
+    padding: 10px;
+    background-color: #fff;
+    position: relative;
+    align-items: center;
+}
+.items.active {
+    display: inline-block;
+}
