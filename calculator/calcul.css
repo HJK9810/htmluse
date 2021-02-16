@@ -1,0 +1,17 @@
+table {
+    border: 1px dotted blue;
+}
+
+td {
+    height: 50px;
+    width: 100px;
+    padding: 10px;
+    text-align: center;
+}
+
+table button {
+    height: 50px;
+    width: 80px;
+    background-color: lightgrey;
+    color: black;
+}

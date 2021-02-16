@@ -3,7 +3,8 @@
     <head>
         <title>calculater</title>
         <style>
-            @import url(cal.css);
+            @import url(caltab.css);
+            @import url(calcul.css);
         </style>
     </head>
     <body>
@@ -26,7 +27,35 @@
         <br>
         <div class="container">
             <div id="tab1" data-tab-content class="items active">
-                ----------.----------
+                <table>
+                    <caption>일반 계산기</caption>
+                    <tbody>
+                        <tr>
+                            <td><button>7</button></td>
+                            <td><button>8</button></td>
+                            <td><button>9</button></td>
+                            <td><button>+</button></td>
+                        </tr>
+                        <tr>
+                            <td><button>4</button></td>
+                            <td><button>5</button></td>
+                            <td><button>6</button></td>
+                            <td><button>-</button></td>
+                        </tr>
+                        <tr>
+                            <td><button>1</button></td>
+                            <td><button>2</button></td>
+                            <td><button>3</button></td>
+                            <td><button>X</button></td>
+                        </tr>
+                        <tr>
+                            <td><button>C</button></td>
+                            <td><button>0</button></td>
+                            <td><button>=</button></td>
+                            <td><button>/</button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div id="tab2" data-tab-content class="items">
                 <input type="number" size="20" value="" placeholder="20자리 숫자까지 입력가능.">
