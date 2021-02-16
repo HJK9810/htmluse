@@ -1,5 +1,6 @@
 table {
     border: 1px dotted blue;
+    border-collapse: collapse;
 }
 
 td {
@@ -7,6 +8,7 @@ td {
     width: 100px;
     padding: 10px;
     text-align: center;
+    background-color: aliceblue;
 }
 
 table button {
@@ -14,4 +16,13 @@ table button {
     width: 80px;
     background-color: lightgrey;
     color: black;
+}
+
+textarea {
+    height: 250px;
+    width: 300px;
+}
+
+label input[type=number] {
+    display: inline;
 }
