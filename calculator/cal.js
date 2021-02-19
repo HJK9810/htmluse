@@ -1,6 +1,21 @@
+var numClick = true;
+
 function add(char) {
-    var display = document.getElementById("display");
-    display.value += char;
+
+    if(numClick == false) {
+        if(isNaN(char) == true) {
+        } else {
+            document.getElementById("display").value += char;
+        }
+    } else {
+        document.getElementById("display").value += char;
+    }
+
+    if(isNaN(char) == true) {
+        numClick = false;
+    } else {
+        numClick = true;
+    }
 }
 
 function reset() {
