@@ -14,13 +14,22 @@ td {
 table button {
     height: 50px;
     width: 80px;
-    background-color: lightgrey;
+    background-color: lightgoldenrodyellow;
     color: black;
 }
 
-textarea {
-    height: 250px;
+#display {
+    height: 170px;
     width: 300px;
+    resize: none;
+}
+
+#result {
+    height: 50px;
+    width: 300px;
+    font: bold 80px;
+    text-align: right;
+    resize: none;
 }
 
 label input[type=number] {
