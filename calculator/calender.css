@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.calendar {
+    width: 100%;
+    margin: 1px;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.YearMonth {
+    font: bold;
+}
+
+.nav {
+    display: flex;
+    border: 1px solid #333333;
+    border-radius: 3px;
+}
+
+.nav-btn {
+    width: 20px;
+    height: 20px;
+    border: none;
+    font-size: 14px;
+    line-height: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.go-today {
+    width: 60px;
+    border-left: 1px solid #333333;
+    border-right: 1px solid #333333;
+}
+
+.days {
+    display: flex;
+    margin: 25px 0 10px;
+}
+
+.day {
+    width: calc(100% / 7);
+    text-align: center;
+}
+
+.dates {
+    display: flex;
+    flex-flow: row wrap;
+    border-top: 1px solid #333333;
+    border-right: 1px solid #333333;
+}
+
+.date {
+    width: calc(100% / 7);
+    padding: 5px;
+    text-align: right;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #333333;
+}
+
+.day:nth-child(7n + 1),
+.date:nth-child(7n + 1) {
+    color: #d13e3e;
+}
+
+.day:nth-child(7n),
+.date:nth-child(7n) {
+    color: #396ee2;
+}
