@@ -1,37 +1,68 @@
-const date = new Date();
+let date = new Date();
 
-const viewYear = date.getFullYear();
-const viewMonth = date.getMonth();
+const renderCalendar = () => {
+    const viewYear = date.getFullYear();
+    const viewMonth = date.getMonth();
 
-const prevLast = new Date(viewYear, viewMonth, 0);
-const thisLast = new Date(viewYear, viewMonth+1, 0);
+    // year & month 채우기
+    document.querySelector(".YearMonth").textContent = `${viewYear}년 ${viewMonth + 1}월`;
 
-const PLDate = prevLast.getDate();
-const PLDay = prevLast.getDay();
+    // 지난달 마지막날 & 이번달 마지막날
+    const prevLast = new Date(viewYear, viewMonth, 0);
+    const thisLast = new Date(viewYear, viewMonth + 1, 0);
 
-const TLDate = thisLast.getDate();
-const TLDay = thisLast.getDay();
+    const PLDate = prevLast.getDate();
+    const PLDay = prevLast.getDay();
 
-document.querySelector(".YearMonth").textContent = `${viewYear}년 ${viewMonth + 1}월`;
+    const TLDate = thisLast.getDate();
+    const TLDay = thisLast.getDay();
 
-const prevDates = [];
-const thisDates = [...Array(TLDate + 1).keys()].slice(1);
-const nextDates = [];
+    // 날짜들 기본배열
+    const prevDates = [];
+    const thisDates = [...Array(TLDate + 1).keys()].slice(1);
+    const nextDates = [];
 
-if (PLDay !== 6) {
-    for (let i = 0; i < PLDay + 1; i++) {
-        prevDates.unshift(PLDate - i);
+    // 이전달 계산
+    if (PLDay !== 6) {
+        for (let i = 0; i < PLDay + 1; i++) {
+            prevDates.unshift(PLDate - i);
+        }
     }
+    
+    // 다음달 계산
+    for (let i = 1; i < 7 - TLDay; i++) {
+        nextDates.push(i);
+    }
+
+    // 날짜들 합치기
+    const dates = prevDates.concat(thisDates, nextDates);
+
+    // 날짜들 정리
+    const firstDateIndex = dates.indexOf(1);
+    const lastDateIndex = dates.indexOf(TLDate);
+    dates.forEach((date, i) => {
+        const condition = i >= firstDateIndex && i < lastDateIndex + 1 ? 'this' : 'other';
+
+        dates[i] = `<div class="date"><span class = "${condition}">${date}</span></div>`;
+    })
+
+    // 달력 그리기
+    document.querySelector('.dates').innerHTML = dates.join('');
 }
-  
-for (let i = 1; i < 7 - TLDay; i++) {
-    nextDates.push(i);
+
+renderCalendar();
+
+const prevMonth = () => {
+    date.setMonth(date.getMonth() - 1);
+    renderCalendar();
 }
 
-const dates = prevDates.concat(thisDates, nextDates);
+const nextMonth = () => {
+    date.setMonth(date.getMonth() + 1);
+    renderCalendar();
+}
 
-dates.forEach((date, i) => {
-  dates[i] = `<div class="date">${date}</div>`;
-})
-
-document.querySelector('.dates').innerHTML = dates.join('');
+const goToday = () => {
+    date = new Date();
+    renderCalendar();
+}
