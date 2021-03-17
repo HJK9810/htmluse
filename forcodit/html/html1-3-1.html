@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>id/class example</title>
+        <meta charset="utf-8">
+        <style>
+            .big-blue-text {
+                font-size: 64px;
+                color: blue;
+            }
+            .centered-text {
+                text-align: center;
+            }
+            #best-text {
+                color: orange;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="centered-text">Heading 1</h1>
+        <h2 class="big-blue-text centered-text">Heading 2</h2>
+        <!-- 중복클래스 사용시 띄어쓰기 후에 클래스 작성. -->
+
+        <p id="best-text">첫 번째 문단</p>
+        <p>두 번째 문단</p>
+        <p class="big-blue-text">세 번째 문단</p>
+        <p>네 번째 문단</p>
+    </body>
+</html>
+<!-- class와 id 차이?
+    class는 중복클래스, 한 요소에 여러 클래스 사용 가능
+    but!! id는 중복ㅑㅇ, 한 요소에 여러 id 사용 불가능.
+        즉, 여러 요소의 스타일링을 원한다면 class, 하나의 요소만 원한다면 id사용. 
+    우선순위는 id가 class보다 먼저.-->
