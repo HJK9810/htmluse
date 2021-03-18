@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Styling Text</title>
+        <meta charset="utf-8">
+        <style>
+            body {
+                font-size: 16px;
+            }
+            .div1 {
+                /* font-size: 100%; */
+                font-size: 1em;
+            }
+            .div2 {
+                /* font-size: 200%; */
+                font-size: 2em;
+            }
+            .div3 {
+                /* font-size: 200%; */
+                /* %는 부모의 요소를 기준으로 계산. */
+                font-size: 2em;
+                /* 100% == 1em */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="div1">
+            div1
+            <div class="div2">
+                div2
+                <div class="div3">
+                    div3
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
