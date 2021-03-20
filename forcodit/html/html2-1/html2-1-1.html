@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Box Model</title>
+        <meta charset="utf-8">
+        <style>
+            h1 {
+                border: 5px solid red;
+                /* border(-top/bottom/left/right): width style color; 
+                border: none; or border: 0;는 테두리 제외*/
+                /* 점선 : dottoed
+                파선 : dashed */
+            }
+            .p1 {
+                border: 5px solid red;
+                padding: 50px 25px;
+                /* width: 500px;
+                margin: 0 auto; 
+                가운데 정렬 코드.*/
+            }
+            .p2 {
+                border: 5px solid red;
+                margin: 50px 30px;
+                /* min-width: 500px; : 최소 500px */
+                /* max-width: 500px; : 최대 500px */
+                /* overflow: ; 
+                >> 기본값, 즉 보이는것 : visible
+                안보이게 하는것 : hidden
+                내용이 적든 크든 스크롤 나오게 하는것 : scroll
+                auto : 맞춰서 스크롤여부 존재.
+                overflow-x : 세로축
+                overflow-y : 가로축*/
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Life is beautiful</h1>
+        <p class="p1">Hello World! So I say</p>
+        <p class="p2">MAy be Main top
+            and Help your assistent
+        </p>
+    </body>
+</html>

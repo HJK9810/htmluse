@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #f0e8d9;
+}
+
+.center {
+  display: block;
+  margin: 75px auto;
+}
+.main {
+  color: #58595b;
+  font-size: 64px;
+  margin-bottom: 30px;
+}
+.say {
+  color: #58595b;
+  font-size: 32px;
+}
+
+.menu {
+  width: 300px;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  background-color: white;
+}
+.food-img {
+  width: 300px;
+  height: 200px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.card {
+  /* width: 300px; */
+  padding: 20px;
+}
+.title {
+  color: #58595b;
+  font-size: 32px;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.script {
+  color: #58595b;
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.account {
+  display: inline-block;
+  vertical-align: middle;
+}
+.account a {
+  color: #0000ee;
+  text-decoration: none;
+  font-size: 16px;
+  text-align: center;
+  margin: 0 auto;
+}
