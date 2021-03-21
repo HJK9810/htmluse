@@ -1,0 +1,9 @@
+h2 {
+    font-size: 30px;
+    padding: 20px;
+    background-color: #72CCA7;
+}
+.container h2:nth-child(1), h2:nth-child(3), h2:nth-child(5) {
+    background-color: #FA987D;
+}
+ 
