@@ -1,0 +1,8 @@
+Position
+
+기본 : static
+>> 포지셔닝이 안된요소
+
+relative : 원래 위치가 기준
+fixed : 브라우저를 기준
+absolute : 가장 가까운 "포지셔닝이 된" 조상요소가 기준.
