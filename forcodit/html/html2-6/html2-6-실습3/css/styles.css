@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 992px;
+  font-family: "Helvetica";
+}
+
+/* navbar */
+.navbar {
+  padding: 0 30px;
+  border-bottom: 1px solid #eee;
+  overflow: hidden;
+  background-color: white;
+  height: 60px;
+}
+
+.navbar #logo {
+  /* float: left; */
+  line-height: 60px;
+}
+#logo img {
+  vertical-align: middle;
+}
+
+#logmenu {
+  float: right;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#logmenu li {
+  float: left;
+  line-height: 60px;
+  padding-left: 30px;
+}
+li a {
+  font-size: 13px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+/* hero header */
+.hero-header {
+  background-image: url("../images/hero_header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 450px;
+}
+.main h1 {
+  margin: 60px auto;
+  font-size: 24px;
+  color: #545454;
+  font-weight: bold;
+  text-align: center;
+}
+/* products */
+.products {
+  width: 700px;
+}
+
+.goods {
+  width: 225px;
+  overflow: hidden;
+  margin: 0;
+}
+.goods a{
+  text-decoration: none;
+  font-size: 16px;
+}
+.goods a p {
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 0;
+  text-align: center;
+}
+.goods:hover {
+  border: 1px solid grey;
+}
+/* .co1 {
+  float: left;
+  margin-right: 30px;
+}
+.co2 {
+  float: left;
+  margin-right: 30px;
+}
+.co3 {
+  float: left;
+} */
+/* footer */
+#footbar {
+  margin-top: 120px;
+  margin-bottom: 80px;
+  text-align: center;
+} 
+#footbar img {
+  padding: 0 10px;
+}
