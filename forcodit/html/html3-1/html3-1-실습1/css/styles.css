@@ -3,30 +3,36 @@ body {
 }
 #div1 {
   height: 60px;
+  width: 100%;
   background-color: #ff0000;
 }
 #div2 {
   height: 350px;
+  width: 100%;
   background-color: #ffa500;
 }
 #div3 {
   height: 320px;
+  width: 100%;
   background-color: #ffff00;
 }
 #div4 {
   height: 385px;
+  width: 100%;
   background-color: #008000;
 }
 #div5 {
   height: 200px;
+  width: 100%;
   background-color: #0000ff;
 }
 #div6 {
   height: 200px;
+  width: 100%;
   background-color: #4b0082;
 }
 
-@media (max-width: 991px) {
+@media (min-width: 767px) {
   #div1 {
     height: 60px;
     float: left;
