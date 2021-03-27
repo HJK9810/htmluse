@@ -1,0 +1,85 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+#carouselExampleControls .carousel-inner {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 400px;
+  line-height: 400px;
+
+  text-align: center;
+}
+.carousel-inner .no1 {
+  background-image: url(../images/guitar.jpg);
+  background-position: left center;
+}
+.carousel-inner .no2 {
+  background-image: url(../images/makeup.jpg);
+  background-position: center top;
+}
+.carousel-inner .no3 {
+  background-image: url(../images/cooking.jpg);
+  background-position: center center;
+}
+
+.items {
+  display: inline-block;
+  line-height: normal;
+  vertical-align: middle;
+}
+.items h5 {
+  font-size: 32px;
+  color: white;
+  margin: 0;
+}
+.items p {
+  font-size: 22px;
+  color: white;
+  margin-top: 18px;
+  margin-bottom: 48px;
+}
+.items a {
+  font-size: 16px;
+  color: white;
+  background-color: #5900e7;
+  padding: 10px 30px;
+  text-decoration: none;
+}
+
+.alert {
+  margin-top: 50px;
+  margin-bottom: 16px;
+}
+
+.container {
+  margin-bottom: 50px;
+}
+.container .info-box {
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 15);
+  /* padding: 0 15px; 기본*/
+  margin-bottom: 20px;
+}
+.container .info-box img {
+  width: 100%;
+}
+.container .info {
+  padding: 10px;
+}
+.container .info p {
+  font-size: 18px;
+  color: #4a4a4a;
+  margin-bottom: 10px;
+}
+.container .info img {
+  height: 20px;
+  width: 20px;
+}
+.container .info span {
+  font-size: 13px;
+  color: #4a4a4a;
+  vertical-align: middle;
+}
