@@ -1,0 +1,29 @@
+5** == 5^2
+''나 ""는 차이 없음.
+console.log();에서 문자열 입력시, "" 내부에 ""를 사용하고 싶을 경우, ``를 사용하는 편이 이득.
+
+불대수 : AND, OR, NOT
+>> AND연산 (&&)
+true AND true = true
+true AND false = false
+false AND true = false
+false AND false = true
+>> OR연산 (||)
+true OR true = true
+true OR false = true
+false OR true = true
+false OR false = false
+>> NOT연산 (!)
+NOT true = false
+NOT false = true
+
+===은 자료형까지 비교
+>> 1=='1' true
+>> 1==='1' false
+
+typeof : 뒷쪽에 오는 것의 자료형을 알아내는 연산자
+>> 사칙연산자보다 우선순위 높음
+
+형변환시 '문자'를 Number로 변환하면 값은 NaN값이지만, '123'일 경우에는 123의 값이 변환됨.
+flase로 변환하는 값
+>> '', 0, NaN
