@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Travel Website</title>
+  <link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+  <body> 
+    <img class="logo" src="images/logo.png" width="165" height="58">
+    <div id="menu">
+      <a id="home">home</a>
+      <a id="seoul">Seoul</a>
+      <a id="tokyo">Tokyo</a>
+      <a id="paris">Paris</a>
+    </div>
+    <img id="photo" src="images/home.png" width="90%">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+      // onclick event
+      $('#home').on('click', clickHome);
+      $('#seoul').on('click', clickSeoul);
+      $('#tokyo').on('click', clickTokyo);
+      $('#paris').on('click', clickParis);
+
+      // photo mouse event
+      $('#photo').on('mouseenter', mouseEnterPhoto);
+      $('#photo').on('mouseleave', mouseLevePhoto);
+
+      // 키보드 이벤트
+      $(document).on('keydown', processKeyEvent);
+
+      // clcik함수 생성
+      function clickSeoul() {
+        $('#photo').attr('src', 'images/seoul.png');
+
+        $('a').css('font-weight', 'normal');
+        $('#seoul').css('font-weight', 'bold');
+      }
+      function clickHome() {
+        $('#photo').attr('src', 'images/home.png');
+
+        $('a').css('font-weight', 'normal');
+        $('#home').css('font-weight', 'bold');
+      }
+      function clickTokyo() {
+        $('#photo').attr('src', 'images/tokyo.png');
+
+        $('a').css('font-weight', 'normal');
+        $('#tokyo').css('font-weight', 'bold');
+      }
+      function clickParis() {
+        $('#photo').attr('src', 'images/paris.png');
+
+        $('a').css('font-weight', 'normal');
+        $('#paris').css('font-weight', 'bold');
+      }
+
+      // 마우스 이벤트 핸들링
+      function mouseEnterPhoto() {
+        $('#photo').css('box-shadow', '5px 10px');
+      }
+      function mouseLevePhoto() {
+        $('#photo').css('box-shadow', 'none');
+      }
+
+      // 키보드 이벤트 핸들링
+      function processKeyEvent(event) {
+        switch(event['key']) {
+          case '1':
+            clickHome();
+            break;
+          case '2':
+            clickSeoul();  
+            break;
+          case '3':
+            clickTokyo();
+            break;
+          case '4':
+            clickParis();  
+            break;
+          default:
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>

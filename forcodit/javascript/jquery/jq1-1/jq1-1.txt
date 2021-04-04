@@ -1,0 +1,16 @@
+Jquery사용용 CDN
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+Jquery와 Javascript비교
+
+- JQuery
+$('#home').on('click', clickHome);
+$('#seoul').on('click', clickSeoul);
+$('#tokyo').on('click', clickTokyo);
+$('#paris').on('click', clickParis);
+
+- Vanilla JavaScript(순수 자바스크립트)
+document.getElementById('home').addEventListener('click', clickHome);
+document.getElementById('seoul').addEventListener('click', clickSeoul);
+document.getElementById('tokyo').addEventListener('click', clickTokyo);
+document.getElementById('paris').addEventListener('click', clickParis);
