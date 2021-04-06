@@ -1,0 +1,5 @@
+* audio
+var audioFile = new Audio("file location or url"); // 생성
+audioFile.play(); // 재생
+audioFile.pause(); // 정지
+audioFile.currentTime = 0; // 오디오 파일 재생 위치 설정
