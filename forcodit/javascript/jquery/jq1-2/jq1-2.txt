@@ -3,3 +3,8 @@ var audioFile = new Audio("file location or url"); // 생성
 audioFile.play(); // 재생
 audioFile.pause(); // 정지
 audioFile.currentTime = 0; // 오디오 파일 재생 위치 설정
+
+* 좋은 이름
+1. 보기 좋아야 함
+2. 이해하기 쉬워야 함
+3. 실수유발 X

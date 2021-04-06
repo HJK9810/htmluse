@@ -1,0 +1,51 @@
+* JQuery 동작구조
+
+// 선택 //     .   // 동작 //
+$('#hello')   .   on('click', sayHello);
+$('#hello')   .   text();
+$('#hello')   .   css('background', '#7f8ff4');
+
+선택부분에 css코드 그대로 사용.
+
+주요동작들
+1. 클래스 관련
+// item에 header이라는 클래스 추가
+$('#item').addClass('header');
+
+// item에 header이라는 클래스 제거
+$('#item').removeClass('header');
+
+// item에 header이라는 클래스가 없으면 추가, 있으면 제거
+$('#item').toggleClass('header');
+
+// item에 header라는 클래스가 있으면 true, 없으면 false 리턴
+$("#item").hasClass('header');
+
+2. 속성관련
+// 이미지 태그의 src 속성 받아오기
+$('img').attr('src');
+
+// 이미지 태그의 src 속성 지정하기
+$('img').attr('src', 'images/logo.png');
+
+// h1 태그의 텍스트 받아오기
+$('h1').text();
+
+// h1 태그에 텍스트 지정하기
+$('h1').text('Hello World!');
+
+// h1 태그에 HTML 텍스트 지정하기
+$('h1').html('<b>Hello World!</b>');
+
+요소추가시
+$('ul li:first-child').before('<li class="item">어떤 요소</li>');
+단, 안과 밖의 따옴표는 다른것으로 사용할것!!
+
+* 선택의 선택
+1. filter('') : ''내부의 요소로 한번더 걸러 선택
+2. not('') : '' 해당 요소만 제외
+3. eq(n) : n번째 요소만 선택(0부터 시작)
+4. parent() : 선택의 부모요소 선택.
+5. children() : 선택의 자식요소 모두선택
+6. find('') : 자녀의 자녀등의 밑의 요소들까지 모두 추려 ''내부요소 탐색.
+7. siblings() : 선택의 모든 이웃요소들

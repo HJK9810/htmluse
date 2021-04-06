@@ -64,12 +64,41 @@
       </div>
     </div>
 
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.min.js"
-      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-      crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
       // 여기에 코드를 입력하세요.
+      const audioFiles = [];
+      audioFiles.push(new Audio("audio/01_kick_drum.wav"));
+      audioFiles.push(new Audio("audio/02_closed_hihat.wav"));
+      audioFiles.push(new Audio("audio/03_open_hihat.wav"));
+      audioFiles.push(new Audio("audio/04_clap.wav"));
+      audioFiles.push(new Audio("audio/05_snap.wav"));
+      audioFiles.push(new Audio("audio/06_crash.wav"));
+      audioFiles.push(new Audio("audio/07_tom1.wav"));
+      audioFiles.push(new Audio("audio/08_tom2.wav"));
+      audioFiles.push(new Audio("audio/09_tambourine.wav"));
+
+      const loop = new Audio('audio/loop.mp3');
+      $('#paly-btn').on('click', function() {
+        loop.play();
+      });
+      $('#stop-btn').on('click', function() {
+        loop.pause();
+        loop.currentTime = 0;
+      });
+
+      $(document).on('keydown', function(event) {
+        if(Number(event.key) >= 1 && Number(event.key) <= 9) {
+          $('.cell').addClass('playing');
+          const cel = audioFiles[Number(event.key) - 1];
+          cel.currentTime = 0;
+          cel.play();
+        }
+      });
+
+      $(document).on('keyup', function() {
+        $('.cell').removeClass('playing');
+      });
     </script>
   </body>
 </html>

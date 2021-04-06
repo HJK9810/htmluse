@@ -1,0 +1,11 @@
+함수에서의 event or e 파라미터
+>> 각 이벤트 key, click등의 type을 의미.
+
+$(document).ready(Ready);
+function Ready() {}
+
+>> 잠시 기다렸다 객체가 생성 된 후에 함수가 수행되도록 하는것.
+
+* 익명함수?
+$(document).ready(function () {});
+>> 이벤트시의 일회성 함수의 경우 간편하게 사용.
