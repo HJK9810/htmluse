@@ -1,0 +1,19 @@
+$('요소').hide() : 요소 숨기기
+$('요소').show() : 숨긴 요소 보이게하기
+$('요소').fadeOut(s) : s/1000초만큼 서서히 사라지기
+$('요소').fadeIn(s) : s/1000초만큼 서서히 나타나기
+
+$('요소').css('opacity', N) : 요소의 투명도를 N만큼 변화
+$('요소').height() : 요소의 높이 받아오기.
+$('요소').scrollTop() : 스크롤시의 창꼭대기의 스크롤 위치. 파라미터 입력시 파라미터 위치로 이동.
+$('html, body').animate({scrollTop: 0}, 500) : 페이지 맨 위로 이동, 500은 이동하는데 걸리는 시간. 시간 뒤에 이펙트 추가 가능.
+>> {}내부는 적용 css를 작성한다.
+>> 에니메이션 이펙트 Easing추가를 위한 코드추가
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
+
+$('요소').each(함수) : 각 요소에 대하여 함수 실행.
+$('요소').offerset().top : 해당 요소의 꼭대기 위치. 단, document를 기준.
+>> $('요소').position().top과 비슷. 단, 해당은 부모요소 기준.

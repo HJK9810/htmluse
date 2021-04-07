@@ -1,0 +1,18 @@
+존재하지 않는 id값을 선택? >> null값 출력
+존재하지 않는 class값을 선택? >> 빈 배열 출력.
+
+유사배열 : 배열의 형태지만 배열이 아닌 것(객체). javascript로 클래스 태그를 선택했을시의 상태.
+>> 특징?
+1. 숫자형태의 indexing 가능.
+2. length 프로퍼티 존재
+3. 배열의 기본 메소드 사용 가능(ex. push(), splice()등)
+4. Array.isArray(유사배열) == false
+for of가 사용 가능한 경우도 있고 불가능한 경우도 있다.
+
+documents.getElementsByTagName('*') : 모든 태그 선택
+
+document.getElementById('') == document.querySelector('#');
+>> css선택자를 이용한 태그선택.
+>> id라면 모를까, class의 경우에는 가장 위의 class만 선택됨.
+document.getElementByClassName('') == document.querySelectorAll('.');
+>> 여러 class를 선택하기 위해서는 해당 사항이 좋음.

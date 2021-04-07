@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>scroll</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="top">
+      Fade away...
+    </div>
+    <button class="go-to-top">Go To Top</button>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script>
+      $(window).on('scroll', function() {
+        $('.top').css('opacity', 1 - $(window).scrollTop() / $('.top').height());
+      })
+
+      $('.go-to-top').on('click', function() {
+        $('html, body').animate({scrollTop: 0}, 500);
+      })
+    </script>
+  </body>
+</html>
