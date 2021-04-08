@@ -1,0 +1,46 @@
+console.dir(document) : 돔 객체를 '객체'형태로 출력.
+
+console.log와 console.dir의 차이
+1. log는 파라미터로 전달받은 값 위주, dir은 객체의 속성 위주
+2. dir은 문자열 표시 형태로 콘솔에 출력
+3. log는 얼마를 전달받던 모두 출력, dir은 얼마를 전달받던 첫번째 값만 출력
+4. log는 DOM 객체를 html형태로 출력, dir은 객체형태로 출력
+>> 값 자체를 확인하고 싶다면 log, 객체의 속성을 보고싶다면 dir
+
+요소 노드 : 태그
+텍스트 노드 : 문자 == 잎노드 or 요소노드의 자식노드
+
+.children[n] : n번째 자식노드
+.firstElementChild : 첫번째 자식노드
+.lastElementChild : 마지막 자식노드
+.parentElement : 부모노드
+.previousElementsSibling : 이전 형제노드
+.nextElementsSibling : 다음 형제노드
+
+.innerHtml : 해당 태그 내부의 모든 내용
+.outerHtml : 해당 태그 <시작부터 >제일 끝까지.
+.textcontent : 해당 태그 내부의 모든 내용중, html태그부분만 제외.
+
+요소 노드 추가하기
+1. 요소 노드 만들기: 
+.createElement('태그이름')
+2. 요소 노드 꾸미기: textContent, innerHTML, ...
+.textContent = '추가값';
+3. 요소 노드 추가하기: NODE.prepend, append, after, before
+.prepend(추가할 변수 or 값);
+
+.remove() : 요소삭제
+>> 자식노드? .children[n].remove()
+
+css 부분적 수정? element.classList
+.add() : 클래스 추가
+.remove() : 클래스 제거
+.toggle('클래스명', T or F) : 있으면(T) 제거, 없으면(F) 추가
+css 통으로 수정? element.children[n].className
+
+비표준 속성 사용?
+1. 선택자로 활용
+2. 객체형태의 데이터에서 값을 표시할 태그구분
+3. 스타일이나 데이터 변경에 사용
+이후 표준속성으로 지정되면 혼동이 생길수 있음. 그에대한 대첵?
+>> 속성명 : data-로 시작하게 하는것.
