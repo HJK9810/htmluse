@@ -17,3 +17,36 @@
 >> 클라이언트? 이벤트가 발생한 순간 브라우저가 콘텐츠를 표시할 수 있는 영역
 2. offsetX, Y : 이벤트가 발생한 target 내에서 마우스의 좌표
 3. pageX, Y : 전체문서 내에서 마우스의 좌표
+
+mouseenter : 포인터가 요소 밖에서 안으로 들어갈때
+mouseleave : 포인터가 요소 안에서 밖으로 나갈때
+
+mouseover, mouseout과의 차이점?
+1. 버블링X. 비슷한 mouseover나 mouseout은 버블링 발생.
+2. 자식요소 영역 계산 X
+>> 즉, 이벤트가 자식요소에 영향을 끼치지 않음.
+
+[ 키보드 이벤트 ]
+
+>> type?
+1. keydown : 버튼 누르는 순간
+2. keypress : 버튼 누르는 순간. 한글, 특수키등은 작동하지 않음.
+3. keyup : 눌렸다 떨어진순간
+
+.key : 이밴트가 발생한 버튼의 값
+.code : 이벤트가 발생한 버튼의 키보드에서의 물리적 위치
+
+* input 태그
+>> type? 
+focusin : 요소에 포커스가 되었을때
+focusout : 요소가 포커스에서 빠져나왔을때
+if 버블링 없는 경우?
+focus == focusin
+blur == focusout
+
+input : '입력'에 관계가 있는 키에만 이밴트 발생
+change : focusout직전혹은 enter키 입력시 발동. 요소의 값이 변했을때 발생함.
+
+* 스크롤 이벤트
+
+window.scrollY : 현재 스크롤된 위치
