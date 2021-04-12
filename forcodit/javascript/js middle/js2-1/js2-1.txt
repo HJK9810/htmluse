@@ -3,3 +3,56 @@ ECMAScript? : 자바스크립트의 표준
 >> 최근버전? ES6 -> ES + 출시년도
 
 모던자바스크립트? 현 시점에서 사용하기 적합한 번위 내에서 최신 버전의 표준을 준수하는 자바스크립트.
+
+데이터타입
+* 기본형?
+>> 기본적인 타입들
+1. Number : 숫자형
+2. String : 문자형
+3. Boolean : 참, 거짓
+4. Null : 빈값
+5. Undefined : 지정되지 않은 값
+>> 특수한 타입들
+6. Symbol : ES2015추가. 유일한 값을 만들때
+7. BigInt : ES2020추가. 엄청 큰 숫자를 다룰때
+* 참조형?
+Object : 객체형
+
+* Symbol형
+const user = Symbol(심블값);
+>> 설령 같은 값을 비교한다 할지라도 무조건 false값 반환.
+* BigInt형
+>> 9000조 이상의 '정수'의 경우 사용. 소수표현은 불가능.
+console.log(9007199254740993n);
+>> 9007199254740993n
+console.log(BigInt(9007199254740993)); 
+>> 9007199254740992n
+
+typeof의 중요한점!!
+1. typeof null == Object
+2. typeof 함수명() == function
+
+* Boolean형
+>> false?(falsy값)
+1. false
+2. null3
+3. NaN
+4. Undefined
+5. 0
+6. ""
+>> treu?(truty값)
+falsy값이외 전부.
+
+AND우선순위 > OR 우선순위
+AND연산 방식
+1. 왼쪽이 true? 오른쪽값 리턴
+2. 왼쪽이 false? 왼쪽값 리턴
+
+OR연산 방식
+1. 왼쪽이 true? 왼쪽값 리턴
+2. 왼쪽이 false? 오른쪽값 리턴
+
+Null병합 연산자?
+A ?? B형식
+1. 왼쪽이 null or undefined? 오른쪽값 리턴
+2. 왼쪽이 null or undefined가 아니라면? 왼쪽값 리턴
