@@ -1,4 +1,4 @@
-import { addInput, list, rollBtn } from './tags.js';
+import { addInput, list, rollBtn } from '../tags.js';
 
 function selectMenu(data) {
   list.classList.remove('rolling');

@@ -1,4 +1,4 @@
-import {addInput, list} from './tags.js';
+import {addInput, list} from '../tags.js';
 
 function add(data) {
   const inputValue = addInput.value;

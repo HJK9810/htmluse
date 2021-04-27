@@ -1,4 +1,4 @@
-import {list} from './tags.js';
+import {list} from '../tags.js';
 
 function reloadMenu(data) {
   list.innerHTML = '';
