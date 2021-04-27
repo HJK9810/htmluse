@@ -1,5 +1,4 @@
-const addInput = document.querySelector('.add-input');
-const list = document.querySelector('.list');
+import {addInput, list} from './tags.js';
 
 function add(data) {
   const inputValue = addInput.value;
