@@ -1,0 +1,32 @@
+* Factory Function : 공장함수
+function 함수명(프로퍼티) {
+  객체명 {
+    객체이름 : 프로퍼티
+  }
+  return 객체명
+}
+변수 = 함수명(넣을 알규먼트);
+console.log(변수);
+>> 객체이름과 프로퍼티가 같을경우 객체이름 생략가능
+
+* Constructor Function : 생성자함수
+function User(프로퍼티) {
+  this.property = property;
+  this.함수 = function() {};
+}
+const 변수 = new User(알규먼트);
+console.log(변수.property);
+주의점!
+1. 생성시 첫 글자는 무조건 대문자.
+2. 생성시 'new'는 필수!
+
+* Class
+Class 클래스명 {
+  constructor(프로퍼티) {
+    this.property = property;
+  }
+
+  메소드(프로퍼티) {
+    내용.
+  }
+}
