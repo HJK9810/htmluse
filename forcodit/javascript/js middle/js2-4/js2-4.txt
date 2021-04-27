@@ -7,16 +7,24 @@ js의 모듈화.
 모듈 문법
 export : 다른 파일에서도 사용 가능
 >> 불러오는 과정 필수.
-import {변수 or 함수} form '가져오는 파일';
+import {변수 or 함수} from '가져오는 파일';
 
 * 모듈화시, 진입용인 js 하나만 불러와도 OK.
 
 가져온 변수 이름 바꾸기?
-import {변수 or 함수 as 바꾸는 이름} form '가져오는 파일';
+import {변수 or 함수 as 바꾸는 이름} from '가져오는 파일';
 
 한번에 import!!
-import * as 한번에 넣는 변수 form '주소';
+import * as 한번에 넣는 변수 from '주소';
 >> 한번에 넣는 것들을 객체화.
 >> * : 와일드카드 문자
 
-마지막에 export {내보낼 변수 or 함수명 as 바꾸는 이름};
+Named export : 
+export {내보낼 변수 or 함수명 as 바꾸는 이름};
+
+default export : 
+export default 변수, 함수 or 값;
+>> import시?
+import {default as 변수명} or import 변수명 from '가져오는 파일';
+>> 하나만 export가능. 여러개 시에는 {}로 묶어 객체화 가능.
+>> 단, 객체화 사용시 점 표기법을 운용해야 하며 import후 이름변경 불가.

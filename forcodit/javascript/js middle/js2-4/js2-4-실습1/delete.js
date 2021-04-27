@@ -11,7 +11,9 @@ function reloadMenu(data) {
   });
 }
 
-export function deleteMenuByIndex(data, index) {
+function deleteMenuByIndex(data, index) {
   data.splice(index, 1);
   reloadMenu(data);
 };
+
+export default deleteMenuByIndex;

@@ -26,7 +26,7 @@ function maxAlert() {
 }
 
 // 아래 코드를 수정해 주세요.
-export function addMenu(data) {
+function addMenu(data) {
   const inputValue = addInput.value;
 
   if (inputValue === '') {
@@ -37,3 +37,5 @@ export function addMenu(data) {
     add(data);
   }
 }
+
+export default addMenu;
