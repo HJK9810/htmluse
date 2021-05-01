@@ -1,0 +1,57 @@
+JSON표기법
+1. 프로퍼티 네임은 무조건 ""!
+2. 문자열 값일 경우에 "" 사용. ''는 불가능.
+3. 프로퍼티 값으로 undefined, NaN, infinity사용 불가능
+4. 주석첨가 불가능
+
+Request 종류? 메소드 / 처리
+1. 데이터 조회 GET / READ
+2. 데이터 추가 POST / CREATE
+3. 데이터 수정 PUT / UPDATE
+4. 데이터 삭제 DELETE / DELETE
+
+Request >> head / body
+head : 메소드 저장 부분
+body : 내용물
+>> get, DELETE는 불필요.
+
+REST API : web api 설계시 준수하는 가이드
+REST architecture
+1. client-server : 양측의 관심사 분리
+2. stateless : 각 리퀘스트는 모두 독립적
+3. cache : 네트워크 비용 절감. 서버에 client의 리스폰스 재활용 여부 저장.
+4. uniform interface : 통신시 준수해야하는 4가지 조건
+1) 리소스를 URI(URL)로 식별 가능해야함
+2) 리소스가 아니라 리소스의 '표현'을 다뤄야 함
+3) 리스퀘트와 리스폰스모두 자체 정보만으로 모든것을 해석 가능해야 함
+3) 리스폰스에는 리소스 표현 뿐 아니라 링크들도 포함되어야 함
+5. layered system : 중간매개 요소를 두고 개층형 층을 형성
+6. code on demand : client는 바로 실행가능한 applet or script를 서버에서 받을수 있어야 함
+** 가장 중요한 조건 **
+1. URL은 리소스를 나타내기 위해서만 사용, 처리는 무조건 메소드로 표현!
+>> 리소스에 대한 처리를 드러내면 안된다.
+2. document는 단수명사, 컬랙션은 복수명사로 표기할것
+>> document : 파일, collection : 디렉토리
+
+Response >> head / body
+head : 상태코드(Status Code)
+body : JSON데이터
+
+상태코드(100~599) >> 정상 출력, 에러발생등이 있음.
+100번대 : 정보성 응답
+200번대 : 정상처리
+300번대 : 리퀘스트 미처리 및 처리를 위해 클라이언트의 추가작업 필요
+400번대 : 클라이언트쪽 에러
+500번대 : 서버쪽 에러
+
+* XML? JSON데이터를 태그를 사용해 표기하는것
+Ajax : 비동기적으로 리퀘스트를 보내고 리스폰스를 받는 작업
+>> 전통적
+const xhr = new XMLHttpRequest();
+>> 최근
+fetch()이용
+
+Request 추가 메소드
+1. PATCH : 기존 데이터 '일부' 수정
+>> PUT은 덮어쓰며 수정
+2. HEAD : 리스폰스의 '해드'부분 받기

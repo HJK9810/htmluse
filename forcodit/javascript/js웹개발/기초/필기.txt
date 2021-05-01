@@ -1,0 +1,21 @@
+fetch(주소).then(콜백함수);
+
+fetch('https://www.google.com')
+  .then((response) => response.text())
+  .then((result) => { console.log(result); });
+
+이전 콜백값을 다음 콜백에서 넘겨받을수 있음.
+response로 그냥 받아올시? 객체 형태로 전달.
+실제 내용?? response.text()로 받와야 함.
+
+Web : World Wide Web. 인터넷으로 연결된 가상의 연결망.
+HyperText : 다른 사이트로 갈수있는 문자
+URL : 웹에 존재하는 특정 데이터를 나타내는 문자열.
+>> https://호스트/Path?쿼리
+호스트 : 서버
+Path : 서버에 있는 데이터중 원하는 데이터를 특정
+쿼리 : 데이터에 관한 세부적 요구사항
+
+https? 스킴 : 프로토콜의 이름
+>> 프로토콜 : 통신시 두 주체가 지켜야 하는 규칙
+= HyperText Transfer Protocol secure
