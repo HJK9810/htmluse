@@ -1,0 +1,18 @@
+비동기 실행 : 
+특정 작업을 시작 하고 다 처리 하기 전에 다음 코드로 진행한 후에 콜백이 실행되는 것.
+>> 특정 조건이 만족되면 콜백이 실행.
+
+비동기함수
+1. setTimeout() : 특정 함수의 실행을 원하는 시간만큼 연기
+setTimeout(() => {}, 연기 시간(ms))
+2. setInterval() : 특정 함수의 실행을 원하는 시간동안 반복실행
+setInterval(() => {}, 지속시간(ms))
+3. addEventListener('이벤트이름', (e) => {});
+
+fetch의 리턴? Promise(어떤 작업의'상태' 정보)
+.then : Promise의 메소드
+
+Promise 상태
+1. pending : 진행중 - request만 보낸상태
+2. fulfilled : 성공 - response를 받은 상태
+3. rejected : 실패 - request를 보내지 못했거나, response를 받지 못한 상태
