@@ -1,19 +1,22 @@
 // 내림차순 정렬 & 인덱스 출력
 function setary(set) {
-  let ary = [...set].sort((a, b) => a - b);
-  console.log(ary)
+  let ary = [...set].sort((a, b) => b - a);
   let ans = [];
+  let check = 0;
 
   for (let i = 0; i < set.length; i++) {
-    let index = set.findIndex(el => ary[i] === el)
-    ans.push(index)
-    console.log(index)
+    let index = set.findIndex(el => ary[i] === el);
+    // 중복체크 : 같은 값은 인덱스 순으로 정렬
+    (i != 0) ?
+      ((ary[i] == ary[i - 1]) ? check += 1 : check = 0)
+      : check = 0;
+
+    ans.push(index + check + 1);
   }
   return ans;
 }
 
 function solution(N, stages) {
-  let answer = [];
   let set = [];
   let pass = [];
   let base = stages.length;
@@ -32,8 +35,8 @@ function solution(N, stages) {
       pass[i] = set[i] / base
     }
   }
-  answer = setary(pass)
-  return answer;
+
+  return setary(pass);
 }
 
 let stage1 = [2, 1, 2, 6, 2, 4, 3, 3]
