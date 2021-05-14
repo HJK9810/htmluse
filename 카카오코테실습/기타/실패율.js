@@ -1,42 +1,22 @@
-// 내림차순 정렬 & 인덱스 출력
-function setary(set) {
-  let ary = [...set].sort((a, b) => b - a);
-  let ans = [];
-  let check = 0;
-
-  for (let i = 0; i < set.length; i++) {
-    let index = set.findIndex(el => ary[i] === el);
-    // 중복체크 : 같은 값은 인덱스 순으로 정렬
-    (i != 0) ?
-      ((ary[i] == ary[i - 1]) ? check += 1 : check = 0)
-      : check = 0;
-
-    ans.push(index + check + 1);
-  }
-  return ans;
-}
-
 function solution(N, stages) {
   let set = [];
   let pass = [];
-  let base = stages.length;
 
+  // 실패율계산 간략화
   for (let i = 0; i < N; i++) {
-    let check = stages.filter(el => el == (i + 1));
-    set[i] = check.length;
+    let up = stages.filter(el => el == (i + 1)).length;
+    let base = stages.filter(el => el >= (i + 1)).length;
+    set[i] = i;
+
+    (base === 0) ? pass[i] = 0 : pass[i] = up / base;
   }
 
-  // 실패율 계산
-  for (let i = 0; i < set.length; i++) {
-    if (!i) {
-      pass[i] = set[i] / base
-    } else {
-      base -= set[i - 1]
-      pass[i] = set[i] / base
-    }
-  }
+  // 값을 따라 내림차순. 같은 값은 index의 오름차순
+  set.sort((a, b) => {
+    return (pass[b] === pass[a]) ? a - b : pass[b] - pass[a];
+  });
 
-  return setary(pass);
+  return set.map(el => el + 1);
 }
 
 let stage1 = [2, 1, 2, 6, 2, 4, 3, 3]
