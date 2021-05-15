@@ -1,7 +1,7 @@
 function solution(answers) {
   let ans = [];
   let stu1 = [1, 2, 3, 4, 5];
-  let stu2 = [2, 1, 2, 3, 2, 4, 2, 4];
+  let stu2 = [2, 1, 2, 3, 2, 4, 2, 5];
   let stu3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5,];
   let check = [];
 
@@ -21,12 +21,12 @@ function solution(answers) {
   //     check[2] += 1;
   //   }
   // }
-  console.log(check)
   let max = Math.max(...check);
-  console.log(max)
-  check.forEach((el, i) => {
-    el === max ? ans.push(i + 1) : ans;
-  })
+
+  for (let i = 0; i < check.length; i++) {
+    if (max === check[i])
+      ans.push(i + 1);
+  }
   return ans;
 }
 
