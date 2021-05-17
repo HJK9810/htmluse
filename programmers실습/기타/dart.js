@@ -1,5 +1,6 @@
 function check(s, ary, now) {
-  ary[now] = Number(ary[now])
+  ary[now] = Number(ary[now]);
+  
   switch (s.charAt(0)) {
     case 'D':
       ary[now] = Math.pow(ary[now], 2);
