@@ -36,18 +36,24 @@ function solution(numbers, hand) {
     } else if (num == 3 || num == 6 || num == 9) {
       pushR = num;
       ans.push('R');
-    } else {
+    } else { // 해당 부분에서 입력후 L, R 위치 변환 입력.
       plenR = distance(num, pushR);
       plenL = distance(num, pushL);
 
       if (plenL == plenR) {
-        if (hand == "right")
+        if (hand == "right") {
+          pushR = num;
           ans.push('R');
-        else
+        }
+        else {
+          pushL = num;
           ans.push('L');
+        }
       } else if (plenL < plenR) {
+        pushL = num;
         ans.push('L');
       } else {
+        pushR = num;
         ans.push('R');
       }
     }
