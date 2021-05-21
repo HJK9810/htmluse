@@ -4,24 +4,21 @@ function solution(board, moves) {
 
   for (let i = 0; i < moves.length; i++) {
     let num = moves[i] - 1;
-    let j = 0;
 
-    for (j = 0; j < board.length; j++) {
-      if (board[j][num]) {
+    for (let j = 0; j < board.length; j++) {
+      if (board[j][num] != 0) {
         box.push(board[j][num]);
         board[j][num] = 0;
+        
+        if (box.length > 1 && box[box.length - 1] == box[box.length - 2]) {
+          box.pop();
+          box.pop();
+          answer += 2;
+        }
         break;
       }
-      // if (box.length > 1 && box[j] === box[j - 1]) {
-      //   box.pop();
-      //   box.pop();
-      // }
     }
   }
-
-  let last = new Set(box);
-
-  answer = box.length - last.size;
 
   return answer;
 }
