@@ -1,9 +1,20 @@
 function solution(s) {
-  if (s.charAt(0) === ')' || s.charAt((s.length) - 1) === '(') {
-    return false;
-  } else {
-    return s.match(/\(/g).length === s.match(/\)/g).length ? true : false;
+  let stak = [];
+
+  for (let i = 0; i < s.length; i++) {
+    let a = s.charAt(i);
+
+    if (a === '(') {
+      stak.push(a);
+    } else {
+      if (stak.length === 0) {
+        return false;
+      }
+      stak.pop(s.charAt(i - 1));
+    }
   }
+
+  return stak.length !== 0 ? false : true;
 }
 
 console.log(solution("()()"))
