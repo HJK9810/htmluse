@@ -1,18 +1,14 @@
 function solution(s) {
   let word = s.split(' ');
-  for (let i = 0; i < word.length; i++) {
-    let ans = word[i].split('');
+  let answer = word.map(el => el === '' ? '' : el.toLowerCase()).map(el => el === '' ? '' : el.replace(el[0], el[0].toUpperCase()));
 
-    ans[0] = ans[0].toUpperCase();
-
-    for (let j = 1; j < ans.length; j++) {
-      ans[j] = ans[j].toLowerCase();
-    }
-    word[i] = ans.join('');
-  }
-
-  return word.join(' ');
+  return answer.join(' ');
 }
+
+// if 한줄화?
+// const solution = (s) => {
+//   return s.split(' ').map(el => el === '' ? '' : el.toLowerCase()).map(el => el === '' ? '' : el.replace(el[0], el[0].toUpperCase())).join(' ');
+// }
 
 console.log(solution("3people unFollowed me"));
 console.log(solution("for the last week"));
