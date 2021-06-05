@@ -21,5 +21,8 @@ function solution(land) {
 
 let lan = [[1, 2, 3, 5], [5, 6, 7, 8], [4, 3, 2, 1]];
 let lan2 = [[4, 3, 2, 1], [2, 2, 2, 1], [6, 6, 6, 4], [8, 7, 6, 5]]
+let lan3 = [[3, 3, 3, 1], [2, 2, 2, 1], [6, 6, 6, 4], [8, 7, 6, 5]]
+
 console.log(solution(lan));
 console.log(solution(lan2));
+console.log(solution(lan3));
