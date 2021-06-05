@@ -1,22 +1,14 @@
 function solution(land) {
-  let answer = 0;
+  let len = land.length;
 
-  for (let i = 0; i < land.length; i++) {
-    let ary = [...land[i]];
-    let max = Math.max(...ary);
-    let j = ary.indexOf(max)
-
-    answer += max;
-    if (i != land.length - 1) {
-      if (ary.filter(el => el === max).length > 1) {
-        j === land[i + 1].indexOf(Math.max(...land[i + 1])) ? land[i + 1][ary.indexOf(max, 2)] = 0 : land[i + 1][j] = 0;
-      } else {
-        land[i + 1][j] = 0;
-      }
-    }
+  for (let i = len - 2; i >= 0; i--) {
+    land[i][0] = Math.max(land[i + 1][1], land[i + 1][2], land[i + 1][3]) + land[i][0];
+    land[i][1] = Math.max(land[i + 1][0], land[i + 1][2], land[i + 1][3]) + land[i][1];
+    land[i][2] = Math.max(land[i + 1][0], land[i + 1][1], land[i + 1][3]) + land[i][2];
+    land[i][3] = Math.max(land[i + 1][0], land[i + 1][1], land[i + 1][2]) + land[i][3];
   }
 
-  return answer;
+  return Math.max(...land[0]);
 }
 
 let lan = [[1, 2, 3, 5], [5, 6, 7, 8], [4, 3, 2, 1]];
