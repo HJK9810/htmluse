@@ -3,10 +3,13 @@ function solution(s) {
   if (string.length % 2 === 1) {
     return 0;
   } else {
-    for (let i = 0; i < string.length; i++) {
+    let i = 0;
+    while (i < string.length) {
       if (string[i] === string[i + 1]) {
         string.splice(i, 2);
-        i = -1;
+        i === 0 ? i = 0 : i -= 1;
+      } else {
+        i++;
       }
       if (string.length === 0)
         return 1;
