@@ -21,11 +21,11 @@ function solution(name) {
       LR === 'R' ? i++ : i--;
     }
 
-    if (name === start) break;
+    if (name === start) return answer;
   }
 
   return answer;
 }
 
 console.log(solution("JEROEN"))
-console.log(solution("JAN"))
+// console.log(solution("JAN"))
