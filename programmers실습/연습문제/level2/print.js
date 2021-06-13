@@ -6,7 +6,7 @@ function solution(priorities, location) {
   }));
 
   while (true) {
-    const standard = stack.splice(0, 1)[0];
+    const standard = stack.shift();
     if (stack.some(el => el.val > standard.val)) {
       stack.push(standard);
     } else {
