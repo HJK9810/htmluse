@@ -1,21 +1,17 @@
 function solution(progresses, speeds) {
-  let out = [];
-  let stack = [];
+  const stack = [];
+  const out = progresses.map((el, i) => Math.ceil((100 - el) / speeds[i]));
 
-  for (let i = 0; i < progresses.length; i++) {
-    let need = 100 - progresses[i];
-    out.push(Math.ceil(need / speeds[i]));
-  }
+  let standard = out[0]; // 시작 기준값
+  let count = 1; // 동일 시기 수행 수
 
-  let count = 1;
   for (let i = 0; i < out.length; i++) {
-    if (out[i] >= out[i + 1]) {
+    if (standard >= out[i + 1]) {
       count++;
-    } else if (i === (out.length - 1)) {
-      stack.push(count);
     } else {
       stack.push(count);
       count = 1;
+      standard = out[i + 1];
     }
   }
 
