@@ -1,16 +1,13 @@
 function solution(people, limit) {
   let answer = 0;
   people.sort((a, b) => b - a);
+  
   while (people.length) {
     const sum = people.shift();
     answer++;
 
     if (sum < limit) {
-      const lastpeo = people.filter(el => el <= (limit - sum));
-      if (lastpeo.length) {
-        const max = Math.max(...lastpeo);
-        people.splice(people.indexOf(max), 1);
-      }
+      if ((limit - sum) >= people[people.length - 1]) people.pop();
     }
   }
   return answer;
