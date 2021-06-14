@@ -1,13 +1,18 @@
 function solution(people, limit) {
   let answer = 0;
+  let boat = 0;
+  let last = people.length - 1;
   people.sort((a, b) => b - a);
-  
-  while (people.length) {
-    const sum = people.shift();
-    answer++;
 
-    if (sum < limit) {
-      if ((limit - sum) >= people[people.length - 1]) people.pop();
+  while (boat <= last) {
+    answer++;
+    if (boat === last) break;
+
+    if (people[boat] + people[last] <= limit) {
+      boat++;
+      last--;
+    } else {
+      boat++;
     }
   }
   return answer;
