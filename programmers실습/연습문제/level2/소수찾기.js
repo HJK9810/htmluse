@@ -19,12 +19,12 @@ function solution(numbers) {
   const ary = isprime(Number(num.join('')));
 
   for (let i = 0; i < ary.length; i++) {
-    const Num = ary[i].toString().split('').sort((a, b) => b - a);
+    const checkN = ary[i].toString().split('').sort((a, b) => b - a);
     for (let j = 0; j < num.length; j++) {
-      const idx = Num.indexOf(num[j]);
-      if (idx > -1) Num.splice(idx, 1);
+      const idx = checkN.indexOf(num[j]);
+      if (idx > -1) checkN.splice(idx, 1);
     }
-    if(Num.length === 0) answer++;
+    if(checkN.length === 0) answer++;
   }
 
   return answer;
