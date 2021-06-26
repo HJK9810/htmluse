@@ -1,31 +1,26 @@
 function solution(name) {
-  let answer = 0;
-  let start = ''.padEnd(name.legth, 'A');
-  let i = 0;
-  let LR = 'R';
+  let maxLeng = 0;
 
-  while (i < name.length) {
-    let nwordcode = name[i].charCodeAt();
-    if (nwordcode - 65 > 13) {
-      answer += (1 + 90 - nwordcode);
-      start[i] = name[i];
-    } else {
-      answer += (nwordcode - 65);
-      start[i] = name[i];
+  const changeAl = letter => letter > 78 ? 91 - letter : letter - 65;
+  const findA = (str, i) => {
+    let cnt;
+    for (cnt = 0; cnt < str.length; cnt++) {
+      if (str[cnt] !== 'A') break;
     }
-
-    if (i === 0 && name[i + 1] === 'A') {
-      i = name.length - 1;
-      LR = 'L';
-    } else {
-      LR === 'R' ? i++ : i--;
-    }
-
-    if (name === start) return answer;
+    return cnt - (i - 1) > maxLeng ? cnt - (i - 1) : maxLeng;
   }
 
-  return answer;
+  const total = [...name].reduce((total, letter, i) => {
+    if (letter !== 'A') return total + changeAl(name.charCodeAt(i)) + 1;
+
+    if (i === 0 || name[i - 1] !== 'A') {
+      maxLeng = findA(name.slice(i), i);
+    }
+    return total + 1;
+  }, 0);
+
+  return total - maxLeng - 1;
 }
 
 console.log(solution("JEROEN"))
-// console.log(solution("JAN"))
+console.log(solution("JAN"))
