@@ -1,25 +1,15 @@
 function solution(number, k) {
-  let nums = number.split('');
-  // let leng = nums.length - k;
-  let max = Math.max(...(num.slice(0, k)));
-  let index = nums.indexOf(max);
+  let stack = [];
 
-  nums.splice(index);
-  k -= index;
-  console.log(nums)
-
-  let i = 0;
-  while (k > 0) {
-    if (nums[i] < nums[i + 1]) {
-      nums.splice(i, 1);
-      k--;
-    } else {
-      i++;
+  for (let i = 0; i < number.length; i++) {
+    while (stack.length > 0 && number[i] > stack[stack.length - 1] && k > 0) {
+      k -= 1;
+      stack.pop();
     }
-    console.log(nums)
+    stack.push(number[i]);
   }
-
-  return nums.join('');
+  stack.splice(stack.length - k, k);
+  return stack.join('');
 }
 
 console.log(solution("1924", 2))
