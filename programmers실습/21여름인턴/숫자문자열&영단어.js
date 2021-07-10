@@ -1,23 +1,22 @@
 const Num = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+const Numleng = [4, 3, 3, 5, 4, 4, 3, 5, 5, 4];
 
 function solution(s) {
   let answer = '';
 
   while (s) {
-    let num = Number(s.charAt(0));
-
-    if (num) {
-      answer += num;
+    if (Number(s.charAt(0))) {
+      answer += s.charAt(0);
       s = s.substring(1);
     } else {
-      let word = Num.find(element => s.indexOf(element) === 0);
-      answer += Num.indexOf(word);
+      const word = Num.findIndex(element => s.indexOf(element) === 0);
+      answer += word;
 
-      s = s.substring((word.length));
+      s = s.substring(Numleng[word]);
     }
   }
-
-  return Number(answer);
+  answer *= 1
+  return answer;
 }
 
 let s1 = "one4seveneight"
