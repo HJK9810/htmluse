@@ -1,32 +1,33 @@
 function solution(skill, skill_trees) {
-  let answer = -1;
-  let st = skill.split('');
+  let answer = 0;
+  const st = skill.split('');
 
   for (let i = 0; i < skill_trees.length; i++) {
     const myS = skill_trees[i].split('');
+    let idx = -1;
     let check = 0;
 
-    while (skill.length > 0) {
-      const idx = myS.indexOf(st.shift());
-      if (idx !== -1) {
-        check++;
-        myS.slice(idx);
-      } else {
-        if (st.length > 0) {
-          if (myS.indexOf(st[0]) === -1) {
-            answer++;
-          }
-          break;
-        }
-      }
+    for (let j = 0; j < st.length; j++) {
+      const index = myS.indexOf(st[j]);
 
-      if (myS.length === 0) {
-        answer++;
+      if (index > idx || idx === (st.length - 1)) {
+        idx = index;
+        check++;
+      } else {
+        check = 0;
         break;
       }
     }
+    if (check) answer++;
   }
   return answer;
 }
 
 console.log(solution("CBD", ["BACDE", "CBADF", "AECB", "BDA"]))
+console.log(solution("CBD", ["CAD"]))
+console.log(solution("CBD", ["AEF", "ZJW"]))
+console.log(solution("REA", ["REA", "POA"]))
+console.log(solution("CBDK", ["CB", "CXYB", "BD", "AECD", "ABC", "AEX", "CDB", "CBKD", "IJCB", "LMDK"]))
+console.log(solution("BDC", ["AAAABACA"]))
+console.log(solution("CBD", ["C", "D", "CB", "BDA"]))
+// 결과 : 2 0 2 1 4 0 2
