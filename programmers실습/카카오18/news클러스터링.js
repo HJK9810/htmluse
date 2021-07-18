@@ -1,10 +1,10 @@
 function solution(str1, str2) {
 
-  const exArray = test => {
+  const exArray = text => {
     const result = [];
-    for (let i = 0; i < test.length - 1; i++) {
-      const tmp = test.slice(i, i + 2)
-      if (tmp.search(/[^a-z]/g) >= 0) {
+    for (let i = 0; i < text.length - 1; i++) {
+      const tmp = text.slice(i, i + 2)
+      if (tmp.search(/[^A-Za-z]/g) >= 0) {
         continue;
       }
       result.push(tmp.toLowerCase());
