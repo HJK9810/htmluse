@@ -1,24 +1,19 @@
 function solution(str1, str2) {
-  str1 = str1.toLowerCase();
-  str2 = str2.toLowerCase();
 
-  const A = [];
-  const B = [];
+  const exArray = test => {
+    const result = [];
+    for (let i = 0; i < test.length - 1; i++) {
+      const tmp = test.slice(i, i + 2)
+      if (tmp.search(/[^a-z]/g) >= 0) {
+        continue;
+      }
+      result.push(tmp.toLowerCase());
+    }
+    return result;
+  }
 
-  for (let i = 0; i < str1.length - 1; i++) {
-    const tmp = str1.slice(i, i + 2)
-    if (tmp.search(/[^a-z]/g) >= 0) {
-      continue;
-    }
-    A.push(tmp);
-  }
-  for (let i = 0; i < str2.length - 1; i++) {
-    const tmp = str2.slice(i, i + 2)
-    if (tmp.search(/[^a-z]/g) >= 0) {
-      continue;
-    }
-    B.push(tmp);
-  }
+  const A = exArray(str1);
+  const B = exArray(str2);
 
   const intersec = [];
 
