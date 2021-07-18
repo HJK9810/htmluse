@@ -20,16 +20,21 @@ function solution(str1, str2) {
     B.push(tmp);
   }
 
-  const intersec = A.filter(el => B.includes(el));
+  const intersec = [];
+
+  for (let i = 0; i < B.length; i++) {
+    const idx = A.indexOf(B[i])
+    if (idx !== -1) {
+      intersec.push(A.splice(idx, 1));
+    }
+  }
   for (let i = 0; i < intersec.length; i++) {
     const idx = B.indexOf(intersec[i])
     if (idx !== -1) B.splice(idx, 1);
   }
   const union = A.concat(B);
 
-  if (union.length === 0) return 65536;
-  else if (intersec.length === 0) return 0;
-  else return Math.floor((intersec.length / union.length) * 65536);
+  return union.length === 0 ? 65536 : Math.floor((intersec.length / union.length) * 65536);
 }
 
 // console.log(solution('FRANCE', 'french'))
