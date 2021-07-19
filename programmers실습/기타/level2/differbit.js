@@ -1,22 +1,16 @@
 function solution(numbers) {
   let answer = [];
   numbers.forEach(num => {
-    const standard = num.toString(2).padStart(4, '0');
-    let count = standard.length;
-
-    while (count > 2) {
-      count = 0;
-      num++;
-      const check = num.toString(2).padStart(4, '0');
-
-      for (let i = 0; i < standard.length; i++) {
-        if (standard[i] !== check[i]) count++;
-      }
+    if (num % 2 === 0) num++;
+    else {
+      const standard = '0' + num.toString(2);
+      const check = standard.replace('01', '10');
+      num = parseInt(check, 2);
     }
-
     answer.push(num);
   });
   return answer;
 }
 
 console.log(solution([2, 7]))
+console.log(solution([10, 12, 9, 15, 3, 100000]))
