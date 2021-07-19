@@ -4,8 +4,8 @@ function solution(numbers) {
     if (num % 2 === 0) num++;
     else {
       const standard = '0' + num.toString(2);
-      const check = standard.replace('01', '10');
-      num = parseInt(check, 2);
+      const idx = standard.lastIndexOf('0');
+      num = parseInt(`${standard.slice(0, idx)}10${standard.slice(idx + 2)}`, 2);
     }
     answer.push(num);
   });
