@@ -1,5 +1,6 @@
 function solution(m, musicinfos) {
-  let answer = ''
+  let answer = [];
+  let timelen = [];
   musicinfos.forEach(inform => {
     const [start, fisnish, title, info] = inform.split(',');
     const [sh, sm] = start.split(':');
@@ -9,11 +10,19 @@ function solution(m, musicinfos) {
     const idx = check.indexOf(m)
 
     if (idx !== -1) {
-      if(check[idx +m.length] !== '#') answer = title;
+      if (check[idx + m.length] !== '#') {
+        answer.push(title);
+        timelen.push(time);
+      }
     }
   });
 
-  return answer;
+  if(answer.length===1) return answer[0];
+  else {
+    const ary = new Set(timelen);
+    const max = Math.max(...timelen);
+    return ary === 1? answer[0] : answer[timelen.indexOf(max)];
+  }
 }
 
 let info1 = ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]
