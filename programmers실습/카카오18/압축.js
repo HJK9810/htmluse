@@ -5,19 +5,20 @@ function solution(msg) {
 
   while (word.length !== 0) {
     let alph = word.shift();
-    let idx = [];
+    let idx = dic.indexOf(alph);
 
-    for (let i = 0; i < word.length; i++) {
-      idx.push(dic.indexOf(alph));
+    for (let i = 0; i <= word.length + 1; i++) {
+      alph += word[0];
+      const index = dic.indexOf(alph);
 
-      if (idx !== -1) {
-        alph += word.shift();
+      if (index !== -1) {
+        idx = index;
+        let a = word.shift();
       } else {
-        word.unshift(alph.charAt(alph.length - 1));
-        answer.push(idx[idx.length - 2]);
-        dic.push(word);
+        dic.push(alph);
+        answer.push(idx + 1);
         break;
-      }
+      }     
     }
   }
 
