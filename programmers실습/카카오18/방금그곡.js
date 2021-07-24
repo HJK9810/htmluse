@@ -2,6 +2,17 @@ function solution(m, musicinfos) {
   let answer = [];
   let timelen = [];
   musicinfos.forEach(inform => {
+    // #이 들어간 부분 치환
+    inform = inform.replace(/(C#)/g, 'c')
+      .replace(/(D#)/g, 'd')
+      .replace(/(F#)/g, 'f')
+      .replace(/(G#)/g, 'g')
+      .replace(/(A#)/g, 'a');
+    m = m.replace(/(C#)/g, 'c')
+      .replace(/(D#)/g, 'd')
+      .replace(/(F#)/g, 'f')
+      .replace(/(G#)/g, 'g')
+      .replace(/(A#)/g, 'a');
     // [시작시간, 종료시간, 제목, 곡정보]
     const [start, fisnish, title, info] = inform.split(',');
     const [sh, sm] = start.split(':');
@@ -13,19 +24,17 @@ function solution(m, musicinfos) {
     const idx = check.indexOf(m)
 
     if (idx !== -1) { // 곡 정보내에 들은 값이 존재한다
-      if (check[idx + m.length] !== '#') { // #이 있을경우 해당 일치값이 아니다.
-        answer.push(title);
-        timelen.push(time);
-      }
+      answer.push(title);
+      timelen.push(time);
     }
   });
   // 길이가 1 === 일치하는것이 없을경우, 유일값 출력
-  if(answer.length===1) return answer[0];
+  if (answer.length === 1) return answer[0];
   else { // 일치값이 여러개일경우
     const ary = new Set(timelen);
     const max = Math.max(...timelen);
     // 시간이 동일? 먼저값. 시간 다름? 가장 긴것(max값)
-    return ary === 1? answer[0] : answer[timelen.indexOf(max)];
+    return ary === 1 ? answer[0] : answer[timelen.indexOf(max)];
   }
 }
 
