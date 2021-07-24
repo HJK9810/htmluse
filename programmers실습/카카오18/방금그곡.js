@@ -30,11 +30,12 @@ function solution(m, musicinfos) {
   });
   // 길이가 1 === 일치하는것이 없을경우, 유일값 출력
   if (answer.length === 1) return answer[0];
+  else if (answer.length === 0) return '(None)' // 일치값이 없는경우
   else { // 일치값이 여러개일경우
     const ary = new Set(timelen);
     const max = Math.max(...timelen);
     // 시간이 동일? 먼저값. 시간 다름? 가장 긴것(max값)
-    return ary === 1 ? answer[0] : answer[timelen.indexOf(max)];
+    return ary.length === 1 ? answer[0] : answer[timelen.indexOf(max)];
   }
 }
 
