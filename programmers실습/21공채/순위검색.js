@@ -1,31 +1,18 @@
-function checkP(word, info) {
-  let count = 0;
-  for (let i of info) {
-    let memberinfo = i.split(" ");
-
-    if (word[0] === memberinfo[0] || word[0] == "-") {
-      if (word[1] === memberinfo[1] || word[1] == "-") {
-        if (word[2] === memberinfo[2] || word[2] == "-") {
-          if (word[3] === memberinfo[3] || word[3] == "-") {
-            if (Number(memberinfo[4]) >= Number(word[4])) {
-              count++;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  return count;
-}
-
 function solution(info, query) {
   let answer = [];
 
-  for (let i = 0; i < query.length; i++) {
-    let ary = query[i].replace(/and /g, '');
-    let word = ary.split(" ");
-    let num = checkP(word, info)
+  for (let i = 0, qlen = query.length; i < qlen; i++) {
+    const word = query[i].replace(/and /g, '').split(' ');
+    let num = 0;
+    for (let j = 0, infoleng = info.length; j < infoleng; j++) {
+      const memberinfo = info[j].split(' ');
+      let check = true;
+      for (let k = 0; k < word.length - 1; k++) {
+        check === true && (word[k] === memberinfo[k] || word[k] === '-') ? check = true : check = false;
+      }
+      check === true && (Number(memberinfo[4]) >= Number(word[4]) || word[4] === '-') ? check = true : check = false;
+      check===true ? num += 1 : num;
+    }
 
     answer.push(num);
   }
