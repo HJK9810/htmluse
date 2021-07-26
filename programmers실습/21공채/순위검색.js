@@ -1,20 +1,27 @@
 function solution(info, query) {
-  let answer = [];
+  let qlen = query.length;
+  let answer = Array.from({ length: qlen }, () => 0);
 
-  for (let i = 0, qlen = query.length; i < qlen; i++) {
+  for (let i = 0; i < qlen; i++) {
     const word = query[i].replace(/and /g, '').split(' ');
-    let num = 0;
+
     for (let j = 0, infoleng = info.length; j < infoleng; j++) {
       const memberinfo = info[j].split(' ');
       let check = true;
-      for (let k = 0; k < word.length - 1; k++) {
-        check === true && (word[k] === memberinfo[k] || word[k] === '-') ? check = true : check = false;
-      }
-      check === true && (Number(memberinfo[4]) >= Number(word[4]) || word[4] === '-') ? check = true : check = false;
-      check===true ? num += 1 : num;
-    }
 
-    answer.push(num);
+      if (Number(memberinfo[4]) >= Number(word[4]) || word[4] === '-') {
+        for (let k = 0; k < 4; k++) {
+          if (check === true) {
+            if (word[k] !== memberinfo[k] && word[k] !== '-') {
+              check = false;
+              break;
+            }
+          }
+          else break;
+        }
+        if (check === true) answer[i] += 1;
+      }
+    }
   }
 
   return answer;
