@@ -10,15 +10,11 @@ function solution(info, query) {
       let check = true;
 
       if (Number(memberinfo[4]) >= Number(word[4]) || word[4] === '-') {
-        for (let k = 0; k < 4; k++) {
-          if (check === true) {
-            if (word[k] !== memberinfo[k] && word[k] !== '-') {
-              check = false;
-              break;
-            }
-          }
-          else break;
-        }
+        if (word[0] !== memberinfo[0] && word[0] !== '-') continue;
+        if (word[1] !== memberinfo[1] && word[1] !== '-') continue;
+        if (word[2] !== memberinfo[2] && word[2] !== '-') continue;
+        if (word[3] !== memberinfo[3] && word[3] !== '-') continue;
+        
         if (check === true) answer[i] += 1;
       }
     }
