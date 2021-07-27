@@ -1,22 +1,23 @@
 const distance = { U: [0, 1], D: [0, -1], R: [1, 0], L: [-1, 0] };
 function solution(dirs) {
-  let answer = 0;
   let now = [0, 0];
-  let his = [];
-  dirs.split('').forEach(dir => {
-    const [x, y] = distance[dir];
-    let route = [...now];
-    now = [now[0] + x, now[1] + y];
-    route = route.concat(now);
-    if (!his.find((el) => JSON.stringify(el) === JSON.stringify(route))) {
-      const change = { x: Math.abs(route[2] - route[0]), y: Math.abs(route[3] - route[1]) };
-      if (change.x === 1 && change.y === 0) if (Math.abs(now[0]) <= 5) answer++;
-      if (change.x === 0 && change.y === 1) if (Math.abs(now[1]) <= 5) answer++;
-      his.push(route);
-    }
-  });
+  let his = new Set();
+  const directs = dirs.split('');
 
-  return answer;
+  for (const dir of directs) {
+    const nx = now[0] + distance[dir][0];
+    const ny = now[1] + distance[dir][1];
+
+    if (nx < -5 || nx > 5 || ny < -5 || ny > 5) continue;
+
+    // 방향이 다르더라도 같은 길을 지나기 때문
+    his.add('' + now[0] + now[1] + nx + ny);
+    his.add('' + nx + ny + now[0] + now[1]);
+
+    now = [nx, ny];
+  }
+
+  return his.size / 2;
 }
 
 console.log(solution("ULURRDLLU"))
