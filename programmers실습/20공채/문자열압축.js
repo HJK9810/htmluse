@@ -1,4 +1,5 @@
 function solution(s) {
+  if (s.length === 1) return 1;
   let answer = [];
   const len = s.length / 2;
 
