@@ -2,32 +2,26 @@ function solution(relation) {
   let answer = 0;
   let len = relation.length;
   let nMax = relation[0].length;
-  let n = 0;
 
-  while (n < nMax) {
+  for (let n = 0; n < nMax; n++) {
     let check = new Set();
     for (let i = 0; i < len; i++) {
       check.add(relation[i][n]);
     }
 
-    if (check.size === len) {
-      answer++;
-      n++;
-    } else {
-      let count = 2;
-      check.clear();
-      while (n + count < nMax) {
+    if (check.size !== len) {
+      for (let count = 2; n + count < nMax; count++) {
+        check.clear();
         for (let i = 0; i < len; i++) {
-          check.add(relation[i].splice(n, count));
+          check.add(relation[i].splice(n, count).join(''));
         }
+
         if (check.size === len) {
           answer++;
           break;
         }
-
-        count++;
       }
-    }
+    } else answer++;
   }
   return answer;
 }
