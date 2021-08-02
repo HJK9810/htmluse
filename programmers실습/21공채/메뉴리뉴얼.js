@@ -11,8 +11,28 @@ function solution(orders, course) {
     }
   }
 
-  // 가능한 코스 매칭
+  // 가능한 코스 매칭 멱집합 사용.
+  const subsets = (ary) => {
+    const res = [];
 
+    const dfs = (start, arr) => {
+      res.push(arr.join(''));
+
+      if (arr.length === ary) return;
+
+      for (let i = start; i < ary.length; i++) {
+        dfs(i + 1, [...arr, ary[i]]);
+      }
+    };
+    dfs(0, []);
+
+    return res;
+  };
+  let sets = subsets(menu);
+  let cors = [];
+  for (let i = 0; i < course.length; i++) {
+    cors = cors.concat(sets.filter(el=>el.length===course[i]));
+  }
   return answer;
 }
 
