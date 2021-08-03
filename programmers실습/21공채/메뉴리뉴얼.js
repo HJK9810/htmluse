@@ -31,9 +31,16 @@ function solution(orders, course) {
   let sets = subsets(menu);
   let cors = [];
   for (let i = 0; i < course.length; i++) {
-    cors = cors.concat(sets.filter(el=>el.length===course[i]));
+    cors = cors.concat(sets.filter(el => el.length === course[i]));
   }
-  return answer;
+
+  // 모든 코스들중 2명 이상 섭취한것 고르기
+  let coursecheck = {};
+  for (let i = 0; i < cors.length; i++) {
+    const filtlen = orders.filter(el => el.indexOf(cors[i]) !== -1).length;
+    if (filtlen >= 2) coursecheck[cors[i]] = filtlen;
+  }
+  return coursecheck;
 }
 
 console.log(solution(["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"], [2, 3, 4]))
