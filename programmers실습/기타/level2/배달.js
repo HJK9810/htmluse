@@ -1,21 +1,15 @@
 function solution(N, road, K) {
   let answer = 1;
-  let i = 1;
-  let route = 0;
-  let check = 0;
-  while (i <= N) {
-    const Go = road.find(el => el[0] === i || el[1] === i, check);
-    if (route + Go[2] > K) check++;
-    else {
-      route += Go[2];
-      i++;
+  // 각 마을마다 지나갈수 있는 모든루트 정리
+  let Roads = {};
+  for (let i = 1; i <= N; i++) {
+    let ary = road.filter(el => el[0] === i);
+    let arr = road.filter(el => el[1] === i);
+    for (let j = 0; j < arr.length; j++) {
+      const [x, y, z] = arr[j];
+      arr[j] = [y, x, z];
     }
-
-    if (route > K) {
-      answer++;
-      i = 1;
-      check = 0;
-    }
+    Roads[i] = ary.concat(arr);
   }
 
   return answer;
