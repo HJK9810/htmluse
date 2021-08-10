@@ -24,12 +24,23 @@ function solution(info, query) {
     const check = query[i].replace(/and /g, '').split(' ');
     const Score = check.pop();
     const KEY = check.join('');
-    const scoreAry = infoMap[KEY];
+    const scoreAry = infoMap[KEY].sort((a, b) => a - b);
 
-    if(scoreAry) {
-      const result = scoreAry.filter(el=>el>=Score).length;
-      answer.push(result);
-    } else answer.push(0);
+    if (scoreAry) {
+      let start = 0;
+      let end = scoreAry.length;
+
+      while (start < end) {
+        const Mid = Math.floor((start + end) / 2);
+
+        if (scoreAry[Mid] >= Score) end = Mid;
+        else if (scoreAry[Mid] < Score) start = Mid + 1;
+      }
+
+      answer.push(scoreAry.length - start);
+    } else {
+      answer.push(0);
+    }
   }
 
   return answer;
