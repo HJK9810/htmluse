@@ -21,7 +21,15 @@ function solution(info, query) {
   }
 
   for (let i = 0; i < query.length; i++) {
-    const word = query[i].replace(/and /g, '').split(' ');
+    const check = query[i].replace(/and /g, '').split(' ');
+    const Score = check.pop();
+    const KEY = check.join('');
+    const scoreAry = infoMap[KEY];
+
+    if(scoreAry) {
+      const result = scoreAry.filter(el=>el>=Score).length;
+      answer.push(result);
+    } else answer.push(0);
   }
 
   return answer;
