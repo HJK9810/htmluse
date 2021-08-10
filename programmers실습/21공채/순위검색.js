@@ -1,23 +1,27 @@
 function solution(info, query) {
-  let qlen = query.length;
-  let answer = Array.from({ length: qlen }, () => 0);
+  let answer = [];
+  let infoMap = {};
 
-  for (let i = 0; i < qlen; i++) {
-    const word = query[i].replace(/and /g, '').split(' ');
-
-    for (let j = 0, infoleng = info.length; j < infoleng; j++) {
-      const memberinfo = info[j].split(' ');
-      let check = true;
-
-      if (Number(memberinfo[4]) >= Number(word[4]) || word[4] === '-') {
-        if (word[0] !== memberinfo[0] && word[0] !== '-') continue;
-        if (word[1] !== memberinfo[1] && word[1] !== '-') continue;
-        if (word[2] !== memberinfo[2] && word[2] !== '-') continue;
-        if (word[3] !== memberinfo[3] && word[3] !== '-') continue;
-        
-        if (check === true) answer[i] += 1;
-      }
+  function combine(cnt, key, ary, score) {
+    if (cnt === 4) {
+      if (!infoMap[key]) infoMap[key] = [score];
+      else infoMap[key].push(score);
+      return;
     }
+
+    combine(cnt + 1, key + ary[cnt], ary, score);
+    combine(cnt + 1, key + '-', ary, score);
+  }
+
+  for (let i = 0; i < info.length; i++) {
+    const ary = info[i].split(' ');
+    const score = Number(ary.pop());
+
+    combine(0, '', ary, score);
+  }
+
+  for (let i = 0; i < query.length; i++) {
+    const word = query[i].replace(/and /g, '').split(' ');
   }
 
   return answer;
