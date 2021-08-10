@@ -1,15 +1,29 @@
 function solution(N, road, K) {
-  let answer = 1;
-  // 각 마을마다 지나갈수 있는 모든루트 정리
-  let Roads = {};
-  for (let i = 1; i <= N; i++) {
-    let ary = road.filter(el => el[0] === i);
-    let arr = road.filter(el => el[1] === i);
-    for (let j = 0; j < arr.length; j++) {
-      const [x, y, z] = arr[j];
-      arr[j] = [y, x, z];
+  let answer = 0;
+  let routes = Array.from({ length: N + 1 }, () => Array.from({ length: N + 1 }).fill(Infinity));
+  for (let i = 0; i <= N; i++) routes[i][i] = 0;
+
+  // 플로이드 와샬알고리즘을 위한 그래프 작성
+  road.forEach(route => {
+    const [first, second, time] = route;
+
+    // 중복제거 - 중복시, 가장 '작은' 시간값을 그래프에 입력
+    // else - '양방향' 이기에 동일값 입력
+    if (routes[first][second] !== Infinity) routes[first][second] = routes[second][first] = Math.min(routes[first][second], time);
+    else routes[first][second] = routes[second][first] = time;
+  });
+
+  // 플로이드 와샬 알고리즘
+  for (let k = 1; k <= N; k++) {
+    for (let i = 1; i <= N; i++) {
+      for (let j = 1; j <= N; j++) {
+        if (routes[i][k] + routes[k][j] < routes[i][j]) routes[i][j] = routes[i][k] + routes[k][j];
+      }
     }
-    Roads[i] = ary.concat(arr);
+  }
+
+  for (let i = 0; i <= N; i++) {
+    if (routes[1][i] <= K) answer++;
   }
 
   return answer;
