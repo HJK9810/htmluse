@@ -20,11 +20,15 @@ function solution(info, query) {
     combine(0, '', ary, score);
   }
 
+  for (const key in infoMap) {
+    infoMap[key] = infoMap[key].sort((a, b) => a - b);
+  }
+
   for (let i = 0; i < query.length; i++) {
     const check = query[i].replace(/and /g, '').split(' ');
     const Score = check.pop();
     const KEY = check.join('');
-    const scoreAry = infoMap[KEY].sort((a, b) => a - b);
+    const scoreAry = infoMap[KEY];
 
     if (scoreAry) {
       let start = 0;
