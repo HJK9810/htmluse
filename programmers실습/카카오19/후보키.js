@@ -21,6 +21,7 @@ function solution(relation) {
   for (let i = 0; i < combList.length; i++) {
     addKey(keyList, combList[i], relation);
   }
+  console.log(keyList)
   return keyList.length;
 }
 
@@ -33,7 +34,7 @@ const addKey = (keyList, key, relate) => {
     for (let j = 0; j < key.length; j++) {
       now = now.filter(el => el !== key[j]);
     }
-    check = now.length !== 0 ? true : false;
+    if(now.length === 0) check = false;
   }
 
   if (keyList.length !== 0 && !check) return;
