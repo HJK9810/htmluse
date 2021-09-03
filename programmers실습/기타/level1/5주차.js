@@ -20,7 +20,7 @@ function solution(word) {
   for (let i = 0; i < word.length; i++) {
     const char = word[i];
     const idx = Alph.indexOf(char);
-    idx ? answer += idx * HOW(i) : answer++;
+    idx ? answer += (idx * HOW(i) + 1) : answer++;
   }
   return answer;
 }
@@ -30,7 +30,7 @@ console.log(solution("AAAE"))
 console.log(solution("I"))
 console.log(solution("EIO"))
 
-// console.log(solution("AAAAE")==6)
-// console.log(solution("AAAE")==10)
-// console.log(solution("I")==1563)
-// console.log(solution("EIO")==1189)
+console.log(solution("AAAAE")==6)
+console.log(solution("AAAE")==10)
+console.log(solution("I")==1563)
+console.log(solution("EIO")==1189)
