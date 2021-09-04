@@ -9,10 +9,20 @@ function solution(s) {
       answer += s.charAt(0);
       s = s.substring(1);
     } else {
-      const word = Num.findIndex(element => s.indexOf(element) === 0);
-      answer += word;
+      let end;
 
-      s = s.substring(Numleng[word]);
+      for (end = 0; end < 5; end++) {
+        if (Number(s.charAt(end))) break;
+        else {
+          const Nword = s.slice(0, end);
+          const word = Num.indexOf(Nword);
+
+          if (word !== -1) break;
+        }
+      }
+
+      answer += Num.indexOf(s.slice(0, end));
+      s = s.substring(end);
     }
   }
   answer *= 1
