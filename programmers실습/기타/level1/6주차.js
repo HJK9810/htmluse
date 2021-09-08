@@ -1,6 +1,6 @@
 function solution(weights, head2head) {
   let answer = [];
-  let Weigh = Array.from({ length: weights.length }, el => false);
+  let Weigh = Array.from({ length: weights.length }, () => 0);
 
 
   for (let i = 0; i < head2head.length; i++) {
@@ -10,7 +10,7 @@ function solution(weights, head2head) {
     for (let j = 0; j < head.length; j++) {
       if (head[j] === 'W') {
         count++;
-        if (weights[i] < weights[j]) Weigh[i] = true;
+        if (weights[i] < weights[j]) Weigh[i]++;
       }
     }
 
