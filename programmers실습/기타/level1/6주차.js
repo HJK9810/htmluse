@@ -5,6 +5,8 @@ function solution(weights, head2head) {
 
   for (let i = 0; i < head2head.length; i++) {
     const head = head2head[i].split('');
+    const Ntotal = head.filter(el => el === 'N').length;
+    const toatl = head.length - Ntotal;
     let count = 0;
 
     for (let j = 0; j < head.length; j++) {
@@ -14,7 +16,7 @@ function solution(weights, head2head) {
       }
     }
 
-    answer.push(count);
+    toatl ? answer.push(count / toatl) : answer.push(0);
   }
 
   return [...answer.keys()].sort((a, b) => {
