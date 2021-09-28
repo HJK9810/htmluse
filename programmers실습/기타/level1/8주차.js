@@ -1,20 +1,20 @@
 function solution(sizes) {
-  let width = [];
-  let height = [];
+  let wmax = 0;
+  let hmax = 0;
 
   for (let i = 0; i < sizes.length; i++) {
     const [w, h] = sizes[i];
 
     if (w > h) {
-      width.push(w);
-      height.push(h);
+      if (wmax < w) wmax = w;
+      if (hmax < h) hmax = h;
     } else {
-      width.push(h);
-      height.push(w);
+      if (wmax < h) wmax = h;
+      if (hmax < w) hmax = w;
     }
   }
 
-  return Math.max(...width) * Math.max(...height);
+  return wmax * hmax;
 }
 
 console.log(solution([[60, 50], [30, 70], [60, 30], [80, 40]]))
