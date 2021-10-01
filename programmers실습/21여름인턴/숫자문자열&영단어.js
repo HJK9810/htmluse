@@ -1,32 +1,13 @@
 const Num = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-const Numleng = [4, 3, 3, 5, 4, 4, 3, 5, 5, 4];
 
 function solution(s) {
-  let answer = '';
+  let answer = s;
 
-  while (s) {
-    if (Number(s.charAt(0))) {
-      answer += s.charAt(0);
-      s = s.substring(1);
-    } else {
-      let end;
-
-      for (end = 0; end < 5; end++) {
-        if (Number(s.charAt(end))) break;
-        else {
-          const Nword = s.slice(0, end);
-          const word = Num.indexOf(Nword);
-
-          if (word !== -1) break;
-        }
-      }
-
-      answer += Num.indexOf(s.slice(0, end));
-      s = s.substring(end);
-    }
+  for (let i = 0; i < Num.length; i++) {
+    const ary = answer.split(Num[i]); // Num[i]에 해당하는 부분을 ''으로 비우며 배열로 분리
+    answer = ary.join(i); // ''부분에 i값을 넣으며 문자열로 합치기
   }
-  answer *= 1
-  return answer;
+  return answer *= 1; // 가장 속도가 빠른 실수 -> 정수 변환법
 }
 
 let s1 = "one4seveneight"
