@@ -4,8 +4,13 @@ function solution(places) {
   places.forEach(room => {
     room = room.map(v => v.split(''));
     let check = true;
+    if(room[0][0] ==='O') {
+      if(room[1][0]==='P'||room[0][1]==='P') check = false;
+    }
 
     for (let i = 0; i < 4; i++) {
+      if(!check) break;
+      
       for (let j = 0; j < 4; j++) {
         const now = room[i][j];
 
