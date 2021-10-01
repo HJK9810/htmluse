@@ -3,41 +3,55 @@ function solution(places) {
 
   places.forEach(room => {
     room = room.map(v => v.split(''));
-    let check = true;
-    if(room[0][0] ==='O') {
-      if(room[1][0]==='P'||room[0][1]==='P') check = false;
-    }
+    let intary = Array.from({length:5},() => new Array(5).fill(0));
 
-    for (let i = 0; i < 4; i++) {
-      if(!check) break;
-      
-      for (let j = 0; j < 4; j++) {
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
         const now = room[i][j];
 
         if (now === 'P') {
-          if (room[i][j + 1] === 'P' || room[i + 1][j] === 'P') {
-            check = false;
-            break;
-          } else if (room[i][j + 1] === 'O') {
-            if ((j < 4 && room[i][j + 2] === 'P') || room[i + 1][j + 1] === 'P') {
-              check = false;
-              break;
+          if (i === 0) {
+            if (j === 0) {
+              intary[1][0] -= 3;
+              intary[0][1] -= 3;
+            } else if (j === 4) {
+              intary[1][4] -= 3;
+              intary[0][3] -= 3;
+            } else {
+              intary[i + 1][j] -= 3;
+              intary[i][j + 1] -= 3;
+              intary[i][j - 1] -= 3;
             }
-          } else if (room[i + 1][j] === 'O') {
-            if ((i < 4 && room[i + 2][j] === 'P') || room[i + 1][j + 1] === 'P') {
-              check = false;
-              break;
+          } else if (i === 4) {
+            if (j === 0) {
+              intary[3][0] -= 3;
+              intary[4][1] -= 3;
+            } else if (j === 4) {
+              intary[3][4] -= 3;
+              intary[4][3] -= 3;
+            } else {
+              intary[i - 1][j] -= 3;
+              intary[i][j + 1] -= 3;
+              intary[i][j - 1] -= 3;
             }
+          } else {
+            intary[i + 1][j]
+            intary[i - 1][j] -= 3;
+            intary[i][j + 1] -= 3;
+            intary[i][j - 1] -= 3;
           }
+        } else if (now === 'X') {
+          intary[i][j] += 10;
+        } else {
+          intary[i][j] += 2;
         }
       }
-
-      if (!check) break;
     }
-
-    check ? answer.push(1) : answer.push(0);
+    console.log(intary)
+    const check = [].concat(...intary).some(v => v <= -2);
+    console.log(check)
+    check ? answer.push(0) : answer.push(1);
   });
-
 
   return answer;
 }
