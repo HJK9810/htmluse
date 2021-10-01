@@ -26,8 +26,22 @@ function solution(m, n, board) {
     }
 
     // 파각된 블럭 당기기
-  }
+    for (let i = m - 1; i > 0; i--) {
+      // 0이 하나라도 없을 경우
+      if (!board[i].some(el => !el)) continue;
 
+      // 해당 줄에 파각할 0이 존재할경우
+      for (let j = 0; j < n; j++) {
+        for (let k = i - 1; k >= 0 && !board[i][j]; k--) {
+          if (board[k][j]) {
+            board[i][j] = board[k][j];
+            board[k][j] = 0;
+            break;
+          }
+        }
+      }
+    }
+  }
   return [].concat(...board).filter(el => !el).length;
 }
 
