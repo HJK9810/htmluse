@@ -3,7 +3,7 @@ function solution(places) {
 
   places.forEach(room => {
     room = room.map(v => v.split(''));
-    let intary = Array.from({length:5},() => new Array(5).fill(0));
+    let intary = Array.from({ length: 5 }, () => new Array(5).fill(0));
 
     for (let i = 0; i < 5; i++) {
       for (let j = 0; j < 5; j++) {
@@ -35,14 +35,14 @@ function solution(places) {
               intary[i][j - 1] -= 3;
             }
           } else {
-            intary[i + 1][j]
+            intary[i + 1][j] -= 3;
             intary[i - 1][j] -= 3;
             intary[i][j + 1] -= 3;
             intary[i][j - 1] -= 3;
           }
         } else if (now === 'X') {
           intary[i][j] += 10;
-        } else {
+        } else if (now === 'O') {
           intary[i][j] += 2;
         }
       }
