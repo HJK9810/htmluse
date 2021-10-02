@@ -1,24 +1,39 @@
-function solution(s) {
-  let stak = [];
-  const leng = s.length;
+const check = (ary) => {
+  let stack = [];
+  const obj = { '(': ')', '{': '}', '[': ']' };
 
-  for (let i = 0; i < leng; i++) {
-    let a = s.charAt(i);
+  for (let i = 0; i < ary.length - 1; i++) {
+    let a = ary[i];
 
     if (a === '(' || a === '{' || a === '[') {
-      stak.push(a);
+      stack.push(a);
     } else {
-      if (stak.length === 0) {
-        return 'X';
-      }
-      stak.pop(s.charAt(i - 1));
+      if (obj[stack[stack.length - 1]] === a) {
+        stack.pop();
+      } else return false;
     }
   }
 
-  return stak.length !== 0 ? 'X' : 'O';
+  return stack.length ? false : true;
 }
 
-console.log(solution("[](){}"))
-console.log(solution("}]()[{"))
-console.log(solution("[)(]"))
-console.log(solution("}}}"))
+function solution(s) {
+  let answer = 0;
+  const leng = s.length;
+  let change = s.split('');
+
+  for (let i = 0; i < leng; i++) {
+    // 변환
+    if (check(change)) answer += 1;
+    change.push(change.shift());
+  }
+
+  return answer;
+}
+
+// console.log(solution("[](){}"))
+// console.log(solution("}]()[{"))
+// console.log(solution("[)(]"))
+// console.log(solution("}}}"))
+
+console.log(check("[](){}"))
