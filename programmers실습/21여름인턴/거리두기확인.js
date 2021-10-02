@@ -35,10 +35,20 @@ function solution(places) {
               intary[i][j - 1] -= 3;
             }
           } else {
-            intary[i + 1][j] -= 3;
-            intary[i - 1][j] -= 3;
-            intary[i][j + 1] -= 3;
-            intary[i][j - 1] -= 3;
+            if (j === 0) {
+              intary[i - 1][0] -= 3;
+              intary[i][1] -= 3;
+              intary[i + 1][0] -= 3;
+            } else if (j === 4) {
+              intary[i - 1][4] -= 3;
+              intary[i][3] -= 3;
+              intary[i + 1][4] -= 3;
+            } else {
+              intary[i + 1][j] -= 3;
+              intary[i - 1][j] -= 3;
+              intary[i][j + 1] -= 3;
+              intary[i][j - 1] -= 3;
+            }
           }
         } else if (now === 'X') {
           intary[i][j] += 10;
@@ -47,9 +57,7 @@ function solution(places) {
         }
       }
     }
-    console.log(intary)
-    const check = [].concat(...intary).some(v => v <= -2);
-    console.log(check)
+    const check = [].concat(...intary).some(v => v < -2);
     check ? answer.push(0) : answer.push(1);
   });
 
@@ -60,3 +68,5 @@ let ary = [["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"], ["POOPX", "OXPXP", "PX
 
 console.log(solution(ary))
 console.log(`solution : ${[1, 0, 1, 1, 1]}`)
+
+// console.log(solution([["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]]))
