@@ -2,7 +2,7 @@ const check = (ary) => {
   let stack = [];
   const obj = { '(': ')', '{': '}', '[': ']' };
 
-  for (let i = 0; i < ary.length - 1; i++) {
+  for (let i = 0; i < ary.length; i++) {
     let a = ary[i];
 
     if (a === '(' || a === '{' || a === '[') {
@@ -31,9 +31,9 @@ function solution(s) {
   return answer;
 }
 
-// console.log(solution("[](){}"))
-// console.log(solution("}]()[{"))
-// console.log(solution("[)(]"))
-// console.log(solution("}}}"))
+console.log(solution("[](){}"))
+console.log(solution("}]()[{"))
+console.log(solution("[)(]"))
+console.log(solution("}}}"))
 
-console.log(check("[](){}"))
+// console.log(check("[](){}"))
