@@ -2,13 +2,13 @@ function solution(n, wires) {
   let first = [];
   let last = [];
   let tree = {};
-  
+
   // 트리 생성
-  for(let i=0;i<n;i++) {
-    tree[i+1] = [];
+  for (let i = 0; i < n; i++) {
+    tree[i + 1] = [];
   }
-  console.log(tree)
-  for(let i=0;i<wires.length;i++) {
+
+  for (let i = 0; i < wires.length; i++) {
     const [nod1, nod2] = wires[i];
     tree[nod1].push(nod2);
     tree[nod2].push(nod1);
@@ -17,10 +17,34 @@ function solution(n, wires) {
   let i = 1;
   let j = n;
 
-  // while (first.length + last.length !== n) {
+  while (first.length + last.length !== n) {
+    first.push(i);
 
-  // }
+    if (tree[i].filter(el => el === i + 1).length !== -1) i += 1;
+    else {
+      for (let k = 1; i - k !== 0; k++) {
+        if (tree[i - k].filter(el => el === i + 1).length !== -1) {
+          i += 1;
+          break;
+        }
+      }
+    }
 
+    if (first.length + last.length === n) break;
+
+    last.push(j);
+
+    if (tree[j].filter(el => el === j - 1).length !== -1) j -= 1;
+    else {
+      for (let k = 1; j + k !== n; k++) {
+        if (tree[j + k].filter(el => el === j - 1).length !== -1) {
+          j -= 1;
+          break;
+        }
+      }
+    }
+  }
+  console.log(`first: [${first}]\nlast:[${last}]`)
   return Math.abs(first.length - last.length);
 }
 
