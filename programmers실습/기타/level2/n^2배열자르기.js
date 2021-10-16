@@ -1,19 +1,17 @@
 function solution(n, left, right) {
-  let array = Array.from({ length: n }, () => Array(n));
+  let answer = [];
 
   for (let i = 0; i < n; i++) {
-    for (let j = 0; j <= i; j++) {
-      if (i === j) {
-        array[i][i] = i + 1;
-        break;
+    if (i === 0) {
+      answer = Array.from({length:n}, (el, i) => i+1);
+    } else {
+      for (let j = 0; j < n; j++) {
+        if (j <= i) answer.push(i + 1);
+        else answer.push(j + 1);
       }
-
-      array[i][j] = i + 1;
-      array[j][i] = i + 1;
     }
   }
 
-  let answer = array.flat()
   return right === n * n - 1 ? answer.slice(left) : answer.slice(left, right + 1);
 }
 
