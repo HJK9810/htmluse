@@ -2,6 +2,7 @@ function solution(line) {
   let answer = [];
   let funct = {};
 
+  // 함수 분리
   line.forEach((el, idx) => {
     const [A, B, C] = el;
     funct[idx] = function (x) { return ((-A / B) * x - (C / B)) };
@@ -9,7 +10,10 @@ function solution(line) {
 
   console.log(funct)
 
+  // 교차점 찾기
   let ary = [];
+
+  // 교차점 x, y 좌표 분리
   let px = [];
   let py = [];
   for (let i = 0; i < ary.length; i++) {
@@ -17,17 +21,17 @@ function solution(line) {
     py.push(ary[i][1]);
   }
 
-  const maxX = Math.max(...x);
-  const maxY = Math.max(...y);
-  const minX = Math.min(...x);
-  const minY = Math.min(...y);
+  const maxX = Math.max(...px);
+  const maxY = Math.max(...py);
+  const minX = Math.min(...px);
+  const minY = Math.min(...py);
 
   for (let i = minX; i <= maxX; i++) {
     let str = '';
     const idx = px.filter((el, idx) => { if (el === i) return idx });
     for (let j = minY; i <= maxY; j++) {
       // [i, j]가 ary에 포함일 경우 * 아닐경우 .입력
-      if (idx.length) str += '*';
+      if (idx.indexOf(j) !== -1) str += '*';
       else str += '.';
     }
   }
