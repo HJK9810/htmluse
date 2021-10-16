@@ -1,5 +1,5 @@
 function solution(n, left, right) {
-  let array = Array.from({ length: n }, () => Array(n).fill(null));
+  let array = Array.from({ length: n }, () => Array(n));
 
   for (let i = 0; i < n; i++) {
     for (let j = 0; j <= i; j++) {
@@ -14,7 +14,7 @@ function solution(n, left, right) {
   }
 
   let answer = array.flat()
-  return answer.slice(left, right + 1);
+  return right === n * n - 1 ? answer.slice(left) : answer.slice(left, right + 1);
 }
 
 
