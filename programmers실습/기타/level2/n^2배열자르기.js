@@ -3,9 +3,13 @@ function solution(n, left, right) {
 
   for (let i = 0; i < n; i++) {
     for (let j = 0; j <= i; j++) {
-      for (let k = 0; k <= i; k++) {
-        if (!array[j][k]) array[j][k] = i + 1;
+      if (i === j) {
+        array[i][i] = i + 1;
+        break;
       }
+
+      array[i][j] = i + 1;
+      array[j][i] = i + 1;
     }
   }
 
