@@ -1,18 +1,50 @@
 function solution(n, left, right) {
   let answer = [];
 
-  for (let i = 0; i < n; i++) {
+  const startcow = Math.floor(left / n);
+  const startrow = left % n;
+  const ansleng = right - left + 1;
+  let count = 0;
+
+  for (let i = startcow; i < n; i++) {
+    let j = startrow;
     if (i === 0) {
-      answer = Array.from({length:n}, (el, i) => i+1);
+      while (j < n) {
+        answer.push(j + 1);
+        j++;
+      }
+
+      count = answer.length;
     } else {
-      for (let j = 0; j < n; j++) {
-        if (j <= i) answer.push(i + 1);
-        else answer.push(j + 1);
+      if (answer.length) {
+        for (j = 0; j < n; j++) {
+          if (j <= i) {
+            answer.push(i + 1);
+            count += 1;
+          }
+          else {
+            answer.push(j + 1);
+            count += 1;
+          }
+
+          if (count === ansleng) return answer;
+        }
+      } else {
+        for (j = startrow; j < n; j++) {
+          if (j <= i) {
+            answer.push(i + 1);
+            count += 1;
+          }
+          else {
+            answer.push(j + 1);
+            count += 1;
+          }
+
+          if (count === ansleng) return answer;
+        }
       }
     }
   }
-
-  return right === n * n - 1 ? answer.slice(left) : answer.slice(left, right + 1);
 }
 
 
