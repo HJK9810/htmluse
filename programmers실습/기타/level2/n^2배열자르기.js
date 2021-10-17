@@ -6,6 +6,23 @@ function solution(n, left, right) {
   const ansleng = right - left + 1;
   let count = 0;
 
+  const forloop = (x, i) => {
+    for (let j = x; j < n; j++) {
+      if (j <= i) {
+        answer.push(i + 1);
+        count += 1;
+      }
+      else {
+        answer.push(j + 1);
+        count += 1;
+      }
+
+      if (count === ansleng) return answer;
+    }
+
+    return answer;
+  }
+
   for (let i = startcow; i < n; i++) {
     let j = startrow;
     if (i === 0) {
@@ -16,32 +33,14 @@ function solution(n, left, right) {
 
       count = answer.length;
     } else {
-      if (answer.length) {
-        for (j = 0; j < n; j++) {
-          if (j <= i) {
-            answer.push(i + 1);
-            count += 1;
-          }
-          else {
-            answer.push(j + 1);
-            count += 1;
-          }
+      if (count) {
+        answer = forloop(0, i);
 
-          if (count === ansleng) return answer;
-        }
+        if (count === ansleng) return answer;
       } else {
-        for (j = startrow; j < n; j++) {
-          if (j <= i) {
-            answer.push(i + 1);
-            count += 1;
-          }
-          else {
-            answer.push(j + 1);
-            count += 1;
-          }
+        answer = forloop(startrow, i);
 
-          if (count === ansleng) return answer;
-        }
+        if (count === ansleng) return answer;
       }
     }
   }
