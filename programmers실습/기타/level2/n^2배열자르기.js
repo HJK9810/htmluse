@@ -10,16 +10,14 @@ function solution(n, left, right) {
     for (let j = x; j < n; j++) {
       if (j <= i) {
         answer.push(i + 1);
-        count += 1;
+        count++;
       }
       else {
         answer.push(j + 1);
-        count += 1;
+        count++;
       }
-
       if (count === ansleng) return answer;
     }
-
     return answer;
   }
 
@@ -29,9 +27,10 @@ function solution(n, left, right) {
       while (j < n) {
         answer.push(j + 1);
         j++;
-      }
+        count++;
 
-      count = answer.length;
+        if (count === ansleng) return answer;
+      }
     } else {
       if (count) {
         forloop(0, i);
