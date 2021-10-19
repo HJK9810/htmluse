@@ -24,8 +24,8 @@ function solution(n, left, right) {
   }
 
   for (let i = startcow; i < n; i++) {
-    let j = startrow;
     if (i === 0) {
+      let j = startrow;
       while (j < n) {
         answer.push(j + 1);
         j++;
@@ -34,11 +34,11 @@ function solution(n, left, right) {
       count = answer.length;
     } else {
       if (count) {
-        answer = forloop(0, i);
+        forloop(0, i);
 
         if (count === ansleng) return answer;
       } else {
-        answer = forloop(startrow, i);
+        forloop(startrow, i);
 
         if (count === ansleng) return answer;
       }
