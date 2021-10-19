@@ -1,7 +1,7 @@
-const crossPoint = ([x, y, z], [a, b, c]) => {
-  if (x * b - a * y) {
-    const Px = (y * c - b * z) / (x * b - a * y);
-    const Py = (y * a - x * c) / (x * b - a * y);
+const crossPoint = ([a, b, c], [d, e, f]) => {
+  if (a * d - b * c) {
+    const Px = (b * f - e * d) / (a * d - b * c);
+    const Py = (e * c - a * f) / (a * d - b * c);
     return [Px, Py];
   } else return [];
 }
@@ -24,7 +24,7 @@ function solution(line) {
       if (Math.floor(arr[0]) === arr[0] && Math.floor(arr[1]) === arr[1]) ary.push(arr);
     }
   }
-
+  console.log(ary)
   // 교차점 x, y 좌표 분리
   let px = [];
   let py = [];
@@ -59,11 +59,12 @@ function solution(line) {
 }
 
 console.log(solution([[2, -1, 4], [-2, -1, 4], [0, -1, 1], [5, -8, -12], [5, 8, 12]]))
-console.log(solution([[0, 1, -1], [1, 0, -1], [1, 0, 1]]))
-console.log(solution([[1, -1, 0], [2, -1, 0]]))
-console.log(solution([[1, -1, 0], [2, -1, 0], [4, -1, 0]]))
+// console.log(solution([[0, 1, -1], [1, 0, -1], [1, 0, 1]]))
+// console.log(solution([[1, -1, 0], [2, -1, 0]]))
+// console.log(solution([[1, -1, 0], [2, -1, 0], [4, -1, 0]]))
 
-console.log(["....*....", ".........", ".........", "*.......*", ".........", ".........", ".........", ".........", "*.......*"])
-console.log(["*.*"])
-console.log(["*"])
-console.log(["*"])
+// console.log('\n')
+// console.log(["....*....", ".........", ".........", "*.......*", ".........", ".........", ".........", ".........", "*.......*"])
+// console.log(["*.*"])
+// console.log(["*"])
+// console.log(["*"])
