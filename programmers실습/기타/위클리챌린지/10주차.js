@@ -1,17 +1,29 @@
+const crossPoint = ([x, y, z], [a, b, c]) => {
+  if (x * b - a * y) {
+    const Px = (y * c - b * z) / (x * b - a * y);
+    const Py = -(x / y) * Px - (z / y);
+    return [Px, Py];
+  } else return [];
+}
+
 function solution(line) {
   let answer = [];
-  let funct = {};
-
-  // 함수 분리
-  line.forEach((el, idx) => {
-    const [A, B, C] = el;
-    funct[idx] = function (x) { return ((-A / B) * x - (C / B)) };
-  });
-
-  console.log(funct)
 
   // 교차점 찾기
   let ary = [];
+  let linelng = line.length;
+
+  for (let i = 0; i < linelng; i++) {
+    const lin1 = line[i];
+    for (let j = 0; j < linelng; j++) {
+      const lin2 = line[j];
+      const arr = crossPoint(lin1, lin2);
+
+      if (!arr.length) continue; // 평행선일경우
+      // 교차점이 정수일경우에만 포함
+      if (Math.floor(arr[0]) === arr[0] && Math.floor(arr[1]) === arr[1]) ary.push(arr);
+    }
+  }
 
   // 교차점 x, y 좌표 분리
   let px = [];
