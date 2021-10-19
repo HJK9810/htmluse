@@ -1,7 +1,7 @@
 const crossPoint = ([x, y, z], [a, b, c]) => {
   if (x * b - a * y) {
     const Px = (y * c - b * z) / (x * b - a * y);
-    const Py = -(x / y) * Px - (z / y);
+    const Py = (y * a - x * c) / (x * b - a * y);
     return [Px, Py];
   } else return [];
 }
@@ -38,14 +38,22 @@ function solution(line) {
   const minX = Math.min(...px);
   const minY = Math.min(...py);
 
-  for (let i = minX; i <= maxX; i++) {
+  // 문자 그리기 
+  for (let i = maxY; i >= minY; i--) {
     let str = '';
-    const idx = px.filter((el, idx) => { if (el === i) return idx });
-    for (let j = minY; i <= maxY; j++) {
-      // [i, j]가 ary에 포함일 경우 * 아닐경우 .입력
-      if (idx.indexOf(j) !== -1) str += '*';
-      else str += '.';
+    const idx = py.filter((el, idx) => { if (el === i) return idx });
+    const leng = maxX - minX + 1;
+    if (!idx.length) {
+      str.padEnd(leng, '.');
+    } else {
+      let start = minX;
+      for (let j = 0; j < idx.length; j++) {
+        const x = px[idx[j]];
+        str += '*'.padStart(x - start, '.');
+      }
     }
+
+    answer.push(str.padEnd(leng, '.'));
   }
   return answer;
 }
