@@ -1,4 +1,4 @@
-const crossPoint = ([a, b, c], [d, e, f]) => {
+const crossPoint = ([a, b, e], [c, d, f]) => {
   if (a * d - b * c) {
     const Px = (b * f - e * d) / (a * d - b * c);
     const Py = (e * c - a * f) / (a * d - b * c);
@@ -15,7 +15,8 @@ function solution(line) {
 
   for (let i = 0; i < linelng; i++) {
     const lin1 = line[i];
-    for (let j = 0; j < linelng; j++) {
+    for (let j = i + 1; j < linelng; j++) {
+
       const lin2 = line[j];
       const arr = crossPoint(lin1, lin2);
 
@@ -29,15 +30,19 @@ function solution(line) {
   let px = [];
   let py = [];
   for (let i = 0; i < ary.length; i++) {
-    px.push(ary[i][0]);
-    py.push(ary[i][1]);
+    const idx = px.indexOf(ary[i][0]);
+    if (idx === -1 || py[idx] !== ary[i][1]) {
+      px.push(ary[i][0]);
+      py.push(ary[i][1]);
+    }
   }
 
   const maxX = Math.max(...px);
   const maxY = Math.max(...py);
   const minX = Math.min(...px);
   const minY = Math.min(...py);
-
+  console.log(`maxX:${maxX}, minX: ${minX}`)
+  console.log(`maxY:${maxY}, minY: ${minY}`)
   // 문자 그리기 
   for (let i = maxY; i >= minY; i--) {
     let str = '';
