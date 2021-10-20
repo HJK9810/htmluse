@@ -25,7 +25,7 @@ function solution(line) {
       if (Math.floor(arr[0]) === arr[0] && Math.floor(arr[1]) === arr[1]) ary.push(arr);
     }
   }
-  console.log(ary)
+
   // 교차점 x, y 좌표 분리
   let px = [];
   let py = [];
@@ -41,20 +41,30 @@ function solution(line) {
   const maxY = Math.max(...py);
   const minX = Math.min(...px);
   const minY = Math.min(...py);
-  console.log(`maxX:${maxX}, minX: ${minX}`)
-  console.log(`maxY:${maxY}, minY: ${minY}`)
+  const leng = maxX - minX + 1;
+
   // 문자 그리기 
   for (let i = maxY; i >= minY; i--) {
     let str = '';
-    const idx = py.filter((el, idx) => { if (el === i) return idx });
-    const leng = maxX - minX + 1;
+    let idx = [];
+
+    for (let j = 0; j < py.length; j++) {
+      if (i === py[j]) idx.push(j);
+    }
+
     if (!idx.length) {
       str.padEnd(leng, '.');
     } else {
       let start = minX;
+      let yidx = [];
+
       for (let j = 0; j < idx.length; j++) {
-        const x = px[idx[j]];
-        str += '*'.padStart(x - start, '.');
+        yidx.push(px[idx[j]]);
+      }
+      yidx.sort((a, b) => a - b);
+
+      for (let j = 0; j < yidx.length; j++) {
+        str += '*'.padStart(yidx[j] - start, '.');
       }
     }
 
@@ -64,7 +74,7 @@ function solution(line) {
 }
 
 console.log(solution([[2, -1, 4], [-2, -1, 4], [0, -1, 1], [5, -8, -12], [5, 8, 12]]))
-// console.log(solution([[0, 1, -1], [1, 0, -1], [1, 0, 1]]))
+console.log(solution([[0, 1, -1], [1, 0, -1], [1, 0, 1]]))
 // console.log(solution([[1, -1, 0], [2, -1, 0]]))
 // console.log(solution([[1, -1, 0], [2, -1, 0], [4, -1, 0]]))
 
