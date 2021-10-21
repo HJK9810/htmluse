@@ -64,7 +64,11 @@ function solution(line) {
       yidx.sort((a, b) => a - b);
 
       for (let j = 0; j < yidx.length; j++) {
-        str += '*'.padStart(yidx[j] - start, '.');
+        if (yidx[j] !== maxX) {
+          str += '*'.padStart(yidx[j] - start + 1, '.');
+        } else {
+          str = str.padEnd(leng - 1, '.') + '*';
+        }
       }
     }
 
