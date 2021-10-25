@@ -13,7 +13,7 @@ function solution(line) {
   let ary = [];
   let linelng = line.length;
 
-  for (let i = 0; i < linelng; i++) {
+  for (let i = 0; i < linelng - 1; i++) {
     const lin1 = line[i];
     for (let j = i + 1; j < linelng; j++) {
 
@@ -48,26 +48,27 @@ function solution(line) {
     let str = '';
     let idx = [];
 
+    // 교점이 해당 y좌표에 존재하는가 체크
     for (let j = 0; j < py.length; j++) {
       if (i === py[j]) idx.push(j);
     }
 
-    if (!idx.length) {
+    if (!idx.length) { // 교점이 존재하지 않는경우
       str.padEnd(leng, '.');
-    } else {
+    } else { // 교점이 존재하는 경우
       let start = minX;
       let yidx = [];
-
+      // 교점의 x좌표 산출 & 정렬
       for (let j = 0; j < idx.length; j++) {
         yidx.push(px[idx[j]]);
       }
       yidx.sort((a, b) => a - b);
 
       for (let j = 0; j < yidx.length; j++) {
-        if (yidx[j] !== maxX) {
-          str += '*'.padStart(yidx[j] - start + 1, '.');
+        if (yidx[j] === minX) {
+          str += '*';
         } else {
-          str = str.padEnd(leng - 1, '.') + '*';
+          str = str.padEnd(yidx[j] - start, '.') + '*';
         }
       }
     }
@@ -79,11 +80,11 @@ function solution(line) {
 
 console.log(solution([[2, -1, 4], [-2, -1, 4], [0, -1, 1], [5, -8, -12], [5, 8, 12]]))
 console.log(solution([[0, 1, -1], [1, 0, -1], [1, 0, 1]]))
-// console.log(solution([[1, -1, 0], [2, -1, 0]]))
-// console.log(solution([[1, -1, 0], [2, -1, 0], [4, -1, 0]]))
+console.log(solution([[1, -1, 0], [2, -1, 0]]))
+console.log(solution([[1, -1, 0], [2, -1, 0], [4, -1, 0]]))
 
-// console.log('\n')
-// console.log(["....*....", ".........", ".........", "*.......*", ".........", ".........", ".........", ".........", "*.......*"])
-// console.log(["*.*"])
-// console.log(["*"])
-// console.log(["*"])
+console.log('\n')
+console.log(["....*....", ".........", ".........", "*.......*", ".........", ".........", ".........", ".........", "*.......*"])
+console.log(["*.*"])
+console.log(["*"])
+console.log(["*"])
