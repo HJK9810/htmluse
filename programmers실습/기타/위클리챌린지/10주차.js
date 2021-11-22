@@ -1,30 +1,31 @@
-const crossPoint = ([a, b, e], [c, d, f]) => {
-  if (a * d - b * c) {
-    const Px = (b * f - e * d) / (a * d - b * c);
-    const Py = (e * c - a * f) / (a * d - b * c);
-    return [Px, Py];
-  } else return [];
-}
-
 function solution(line) {
   let answer = [];
 
   // 교차점 찾기
-  let ary = [];
-  let linelng = line.length;
+  const crossPoint = () => {
+    let point = [];
 
-  for (let i = 0; i < linelng - 1; i++) {
-    const lin1 = line[i];
-    for (let j = i + 1; j < linelng; j++) {
+    let linelng = line.length;
 
-      const lin2 = line[j];
-      const arr = crossPoint(lin1, lin2);
+    for (let i = 0; i < linelng - 1; i++) {
+      for (let j = i + 1; j < linelng; j++) {
+        const [a, b, e] = line[i];
+        const [c, d, f] = line[j];
 
-      if (!arr.length) continue; // 평행선일경우
-      // 교차점이 정수일경우에만 포함
-      if (Math.floor(arr[0]) === arr[0] && Math.floor(arr[1]) === arr[1]) ary.push(arr);
+        const slope = a * d - b * c;
+
+        if (slope) {
+          const Px = (b * f - e * d) / slope;
+          const Py = (e * c - a * f) / slope;
+          // Px와 Py모두 정수일 경우 포함 -> Number.isInteger() : 함수 안이 정수이면 true 아님 false
+          if (Number.isInteger(Px) && Number.isInteger(Py)) point.push([Px, Py]);
+        }
+      }
     }
+
+    return point;
   }
+
 
   // 교차점 x, y 좌표 분리
   let px = [];
