@@ -1,6 +1,4 @@
 function solution(line) {
-  let answer = [];
-
   // 교차점 찾기
   const crossPoint = () => {
     let point = [];
@@ -26,57 +24,41 @@ function solution(line) {
     return point;
   }
 
-
-  // 교차점 x, y 좌표 분리
-  let px = [];
-  let py = [];
-  for (let i = 0; i < ary.length; i++) {
-    const idx = px.indexOf(ary[i][0]);
-    if (idx === -1 || py[idx] !== ary[i][1]) {
-      px.push(ary[i][0]);
-      py.push(ary[i][1]);
-    }
-  }
-
-  const maxX = Math.max(...px);
-  const maxY = Math.max(...py);
-  const minX = Math.min(...px);
-  const minY = Math.min(...py);
-  const leng = maxX - minX + 1;
-
   // 문자 그리기 
-  for (let i = maxY; i >= minY; i--) {
-    let str = '';
-    let idx = [];
-
-    // 교점이 해당 y좌표에 존재하는가 체크
-    for (let j = 0; j < py.length; j++) {
-      if (i === py[j]) idx.push(j);
-    }
-
-    if (!idx.length) { // 교점이 존재하지 않는경우
-      str.padEnd(leng, '.');
-    } else { // 교점이 존재하는 경우
-      let start = minX;
-      let yidx = [];
-      // 교점의 x좌표 산출 & 정렬
-      for (let j = 0; j < idx.length; j++) {
-        yidx.push(px[idx[j]]);
-      }
-      yidx.sort((a, b) => a - b);
-
-      for (let j = 0; j < yidx.length; j++) {
-        if (yidx[j] === minX) {
-          str += '*';
-        } else {
-          str = str.padEnd(yidx[j] - start, '.') + '*';
-        }
+  const drawStart = (points) => {
+    // 교차점 x, y 좌표 분리
+    let px = [];
+    let py = [];
+    for (let i = 0; i < points.length; i++) {
+      const idx = px.indexOf(points[i][0]);
+      if (idx === -1 || py[idx] !== points[i][1]) {
+        px.push(points[i][0]);
+        py.push(points[i][1]);
       }
     }
 
-    answer.push(str.padEnd(leng, '.'));
+    const maxX = Math.max(...px);
+    const maxY = Math.max(...py);
+    const minX = Math.min(...px);
+    const minY = Math.min(...py);
+    const leng = maxX - minX + 1;
+
+    // '.'로만 이루어진 보드 생성
+    let board = Array.from(Array(maxY - minY + 1), () => Array(leng).fill('.'));
+
+    /** 
+     * 교점 위치의 '*' 붙이기
+     * 1. [0, 0] = board[maxY][-minX]
+     * 2. [1, 1] = board[maxY-1][1-minX]
+    */
+    points.forEach(([x, y]) => {
+      board[maxY - y][x - minX] = '*';
+    });
+
+    return board.map(ary => ary.join(''));
   }
-  return answer;
+
+  return drawStart(crossPoint());
 }
 
 console.log(solution([[2, -1, 4], [-2, -1, 4], [0, -1, 1], [5, -8, -12], [5, 8, 12]]))
