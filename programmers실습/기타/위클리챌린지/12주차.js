@@ -1,19 +1,30 @@
+// 피로도
 function solution(k, dungeons) {
-  let answer = 0;
-  let sortdun = dungeons.sort((a, b) => {
-    if (a[0] !== b[0]) return b[0] - a[0];
-    else return b[1] - a[1];
-  });
+  let max = Number.MIN_SAFE_INTEGER;
 
-  let i = 0;
-  while (k > 0) {
-    if (sortdun[i][0] <= k) {
-      k -= sortdun[i][1];
-      answer++;
-    } else if (sortdun[i][0] > k) break;
-    i++;
+  const DFS = (p, pass, npass) => {
+    // 모든 던전을 확인한 경우
+    if (pass.length + npass.length === dungeons.length) max = max > pass.length ? max : pass.length;
+    else { // 모든 던전을 아직 확인하지 못한 경우
+      for (let i = 0; i < dungeons.length; i++) {
+        // 방문 여부 확인
+        if (!pass.includes(i) && !npass.includes(i)) {
+          if (p >= dungeons[i][0]) {
+            pass.push(i);
+            DFS(p - dungeons[i][1], pass, npass);
+            pass.pop();
+          } else {
+            npass.push(i);
+            DFS(p, pass, npass);
+            npass.pop(i);
+          }
+        }
+      }
+    }
   }
-  return answer;
+
+  DFS(k, [], []);
+  return max;
 }
 
 console.log(solution(80, [[80, 20], [50, 40], [30, 10]]))
