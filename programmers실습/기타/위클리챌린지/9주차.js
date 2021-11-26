@@ -4,12 +4,10 @@ function solution(n, wires) {
   let tree = {};
 
   // 트리 생성
-  for (let i = 0; i < n; i++) {
-    tree[i + 1] = [];
-  }
-
   for (let i = 0; i < wires.length; i++) {
     const [nod1, nod2] = wires[i];
+    if(!tree[nod1]) tree[nod1] = [];
+    if(!tree[nod2]) tree[nod2] = [];
     tree[nod1].push(nod2);
     tree[nod2].push(nod1);
   }
