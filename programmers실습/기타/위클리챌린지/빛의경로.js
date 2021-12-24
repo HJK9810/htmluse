@@ -10,6 +10,9 @@ function solution(grid) {
   });
 
   return root;
+
+  // 출력시 오름차순 정렬
+  // return answer.sort((a, b) => a - b);
 }
 
 console.log(solution(["SL", "LR"]))
