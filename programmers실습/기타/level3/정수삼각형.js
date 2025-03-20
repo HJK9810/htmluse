@@ -1,24 +1,13 @@
 function solution(triangle) {
-  const sumSet = new Set();
-  const lastLayer = triangle.length;
+  const table = [...triangle];
 
-  function checkTri(layer, index, sum) {
-    const value = triangle[layer - 1][index - 1];
-
-    if (layer === lastLayer) {
-      sumSet.add(sum + value);
-      return;
+  for (let i = triangle.length - 2; i >= 0; i--) {
+    for (let j = 0; j < triangle[i].length; j++) {
+      table[i][j] += Math.max(table[i + 1][j], table[i + 1][j + 1]);
     }
-
-    checkTri(layer + 1, index, sum + value);
-    checkTri(layer + 1, index + 1, sum + value);
   }
 
-  checkTri(1, 1, 0);
-
-  const sumList = Array.from(sumSet).sort((a, b) => b - a);
-
-  return sumList[0];
+  return table[0][0];
 }
 
 console.log(solution([[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]));
