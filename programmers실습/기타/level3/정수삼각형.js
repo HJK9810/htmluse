@@ -1,12 +1,12 @@
 function solution(triangle) {
-  const sumList = [];
+  const sumSet = new Set();
   const lastLayer = triangle.length;
 
   function checkTri(layer, index, sum) {
     const value = triangle[layer - 1][index - 1];
 
     if (layer === lastLayer) {
-      sumList.push(sum + value);
+      sumSet.add(sum + value);
       return;
     }
 
@@ -16,7 +16,7 @@ function solution(triangle) {
 
   checkTri(1, 1, 0);
 
-  sumList.sort().reverse();
+  const sumList = Array.from(sumSet).sort((a, b) => b - a);
 
   return sumList[0];
 }
