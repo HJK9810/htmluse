@@ -8,9 +8,9 @@ var countFairPairs = function(nums, lower, upper) {
   nums.sort((a, b) => a - b);
   let result = 0;
 
-  for (let i = 0; i < nums.length; i++) {
-    const left = lowerBound(nums, lower - nums[i], i + 1);
-    const right = upperBound(nums, upper - nums[i], i + 1);
+  for (let idx = 0; idx < nums.length; idx++) {
+    const left = checkBound(nums, lower - nums[idx], idx + 1);
+    const right = checkBound(nums, upper - nums[idx], idx + 1, false);
 
     result += right - left;
   }
@@ -18,25 +18,19 @@ var countFairPairs = function(nums, lower, upper) {
   return result;
 };
 
-const lowerBound = (nums, target, start) => {
+const checkBound = (nums, target, start, isUnder = true) => {
   let left = start;
   let right = nums.length;
 
   while (left < right) {
     const mid = Math.floor((left + right) / 2);
-    nums[mid] < target ? left = mid + 1 : right = mid;
-  }
 
-  return left;
-}
+    if (isUnder) {
+      nums[mid] < target ? left = mid + 1 : right = mid;
+    } else {
+      nums[mid] <= target ? left = mid + 1 : right = mid;
+    }
 
-const upperBound = (nums, target, start) => {
-  let left = start;
-  let right = nums.length;
-
-  while (left < right) {
-    const mid = Math.floor((left + right) / 2);
-    nums[mid] <= target ? left = mid + 1 : right = mid;
   }
 
   return left;
