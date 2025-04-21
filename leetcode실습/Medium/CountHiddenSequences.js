@@ -5,25 +5,20 @@
  * @return {number}
  */
 var numberOfArrays = function(differences, lower, upper) {
-  let result = 0;
+  let sum = 0;
+  let minSum = 0;
+  let maxSum = 0;
 
-  for (let start = lower; start <= upper; start++) {
-    let seq = start;
-    let isPassed = true;
-
-    for (let idx = 0; idx < differences.length; idx++) {
-      seq += differences[idx];
-      if (seq < lower || seq > upper) {
-        isPassed = false;
-        break;
-      }
-    }
-
-    if (!isPassed) continue;
-    if (seq >= lower && seq <= upper) result++;
+  for (let diff of differences) {
+    sum += diff;
+    minSum = Math.min(minSum, sum);
+    maxSum = Math.max(maxSum, sum);
   }
 
-  return result;
+  const minStart = lower - minSum;
+  const maxStart = upper - maxSum;
+
+  return Math.max(0, maxStart - minStart + 1);
 };
 
 console.log(numberOfArrays([1,-3,4], 1, 6))
