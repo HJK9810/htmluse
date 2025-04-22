@@ -8,24 +8,16 @@ var countAndSay = function(n) {
   const str = countAndSay(n - 1);
   let result = "";
 
-  let count = 0;
-  let base = "";
-  for (let index = 0; index < str.length; index++) {
-    if (!index) {
-      base = str[index];
-      count = 1;
-      continue;
-    }
-
-    if (base === str[index]) count++;
+  let count = 1;
+  for (let index = 1; index < str.length; index++) {
+    if (str[index] === str[index - 1]) count++;
     else {
-      result += count + base;
-      base = str[index];
+      result += count + str[index - 1];
       count = 1;
     }
   }
 
-  return result + count + base;
+  return result + count + str[str.length - 1];
 };
 
 console.log(countAndSay(4))
