@@ -5,26 +5,23 @@
  * @return {number}
  */
 var countSubarrays = function(nums, minK, maxK) {
-  let count = 0;
+  let result = 0;
+  let left = -1, lastMin = -1, lastMax = -1;
 
-  for (let left = 0; left < nums.length; left++) {
-    for (let right = nums.length; right > left; right--) {
-      let check = true;
-      let hasMin = false, hasMax = false;
+  for (let idx = 0; idx < nums.length; idx++) {
+    if (nums[idx] < minK || nums[idx] > maxK) {
+      left = idx;
+    }
+    if (nums[idx] === minK) lastMin = idx;
+    if (nums[idx] === maxK) lastMax = idx;
 
-      for (let idx = left; idx <= right; idx++) {
-        if (nums[idx] < minK || nums[idx] > maxK) {
-          check = false;
-          break;
-        }
-        if (nums[idx] === minK) hasMin = true;
-        if (nums[idx] === maxK) hasMax = true;
-      }
-      if (check && hasMin && hasMax) count++;
+    const validStart = Math.min(lastMin, lastMax);
+    if (validStart > left) {
+      result += validStart - left;
     }
   }
 
-  return count;
+  return result;
 };
 
 console.log(countSubarrays([1,3,5,2,7,5], 1, 5))
